@@ -1,0 +1,136 @@
+.nest-form-group {
+  grid-column: span 12;
+  position: relative;
+}
+.nest-form-group.error small {
+  margin-bottom: 0.75rem;
+}
+.nest-form-group.error input:disabled + small {
+  margin-bottom: 0;
+}
+
+.nest-form-group.half.mobile-view {
+  grid-column: span 12;
+}
+
+.nest-form-group.half {
+  grid-column: span 6;
+}
+.nest-form-group select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='teal' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 98%;
+  background-position-y: 0.75rem;
+}
+.nest-form-group label {
+  color: var(--shade-3);
+  width: auto !important;
+  position: absolute;
+  top: 14px;
+  left: 1rem;
+  z-index: 1;
+  transition: all 0.2s;
+}
+.nest-form-group label svg {
+  height: 0.75rem;
+  width: 0.75rem;
+  margin-right: 0.5rem;
+}
+.nest-form-group label svg path {
+  fill: var(--shade-3);
+}
+.nest-form-group.filled label,
+.nest-form-group input:focus ~ label,
+.nest-form-group select:focus ~ label {
+  font-size: 0.75rem;
+  top: 0.25rem;
+  left: 0.5rem;
+}
+
+.nest-form-group.filled label svg,
+.nest-form-group input:focus ~ label svg {
+  height: 0.5rem;
+  width: 0.5rem;
+  margin-right: 0.25rem;
+}
+
+/*=======================================
+Input / Select fields
+========================================*/
+.nest-form-group input,
+.nest-form-group select {
+  padding: 0.75rem 0.5rem 0 0.75rem;
+  border-radius: 0.3125rem;
+  border: 1px solid var(--shade-3);
+  background-color: var(--shade-8);
+  min-height: 3rem;
+  width: 100%;
+  color: transparent;
+}
+.nest-form-group .nest-input-icon ~ input {
+  padding: 0.75rem 2.5rem 0 0.75rem;
+}
+
+@-moz-document url-prefix() {
+  .nest-form-group select {
+    padding: 1.25rem 0.5rem 0 0.75rem;
+  }
+}
+
+.nest-form-group input:disabled ~ label {
+  opacity: 0.75;
+}
+.nest-form-group input:disabled {
+  opacity: 0.5;
+  border: 1px solid var(--shade-3) !important;
+  background-color: white;
+}
+
+.nest-form-group.filled input,
+.nest-form-group.filled select {
+  color: black;
+}
+.nest-form-group input:focus,
+.nest-form-group select:focus {
+  outline: none;
+  color: black;
+  border-bottom: 3px solid var(--shade-3);
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.nest-form-group.error input,
+.nest-form-group.error select {
+  border: 1px solid var(--error);
+}
+.nest-form-group button.nest-input-icon {
+  cursor: pointer;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  background: unset;
+  border: unset;
+  position: absolute;
+  right: 0.75rem;
+  top: 1.0125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nest-form-group .nest-input-icon svg {
+  width: 1.25rem !important;
+  height: 1.25rem;
+}
+.nest-form-group .nest-input-icon path {
+  fill: var(--shade-4);
+}
+.nest-form-group.error small {
+  color: var(--error);
+  display: block;
+  text-align: right;
+  margin-top: 0.25rem;
+}
+.nest-form-group input:disabled + small {
+  display: none;
+}

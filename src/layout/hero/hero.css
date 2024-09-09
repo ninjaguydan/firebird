@@ -1,0 +1,116 @@
+section.hero {
+  overflow: hidden;
+  height: 13.375rem;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 0.25rem solid var(--primary);
+  position: relative;
+  background-color: black;
+}
+
+.hero-bg {
+  position: absolute;
+  filter: blur(6px);
+  scale: 1.25;
+  height: 100%;
+  right: -8rem;
+  top: 0;
+  opacity: 0.6;
+}
+
+.mobile-logo {
+  align-self: center;
+  z-index: 9;
+  position: absolute;
+  top: 1.5rem;
+}
+
+.mobile-logo svg {
+  height: 5rem;
+  width: 5rem;
+}
+
+.mobile-logo svg path {
+  fill: white;
+}
+
+.mobile-logo .logo-header {
+  font-size: 2rem;
+}
+
+.mobile-logo .logo-subheader {
+  font-size: 1.25rem;
+}
+
+.mobile-logo p {
+  color: white;
+}
+
+.hero-text {
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.hero-text svg {
+  height: 4rem;
+  width: 4rem;
+  height: clamp(5rem, 8vw, 6rem);
+  width: clamp(5rem, 8vw, 6rem);
+}
+
+.hero-text svg path {
+  fill: white;
+}
+
+.hero-text h1 {
+  color: var(--shade-8);
+  font-family: Roboto;
+  font-weight: 700;
+  line-height: 75%;
+  font-size: 6vw;
+  font-size: clamp(1rem, 6vw, 3.75rem);
+}
+
+.hero-text h1 span {
+  font-size: 3vw;
+  font-size: clamp(1rem, 4vw, 2.125rem);
+}
+
+@media only screen and (min-width: 491px) {
+  section.hero {
+    height: 23.25rem;
+    border-width: 0.5rem;
+    padding: 2rem;
+  }
+
+  section.hero.fit-content {
+    height: 15rem;
+    justify-content: center;
+  }
+
+  .hero-text {
+    text-shadow: 5px 3px 2px rgba(0, 0, 0, 0.5);
+    margin-top: 3rem;
+  }
+
+  section.hero.fit-content .hero-text {
+    margin-top: 0;
+  }
+}
+@media only screen and (min-width: 768px) {
+  section.hero {
+    padding: 4.5rem;
+  }
+
+  .hero-bg {
+    object-fit: cover;
+    width: 100%;
+    right: unset;
+  }
+
+  .hero-text {
+    margin-top: 0;
+  }
+}

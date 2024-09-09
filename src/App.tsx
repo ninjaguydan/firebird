@@ -1,45 +1,47 @@
-import "src/App.css";
+import { useState } from "react";
+import { Route, Routes } from "react-router";
 
-import SvgAdd from "assets/icons/SvgAdd.tsx";
-import reactLogo from "assets/react.svg";
+import Footer from "layout/footer/Footer";
+import Header from "layout/header/Header";
+
+import Login from "pages/login/LogIn";
+
+import ScrollToTop from "utils/hooks/general/useScrollToTop";
 
 import viteLogo from "/vite.svg";
 
-function App() {
-  const unauthenticatedPaths = [
-    "/",
-    "/login",
-    "/loginredirect",
-    "/registration",
-    "/forgotpassword",
-    "/signin",
-    "/checkemail",
-    "/verify",
-    "/setupmfa",
-    "/notFound",
-    "/one-time-payment",
-  ];
+const unauthenticatedPaths = [
+  "/",
+  "/login",
+  "/loginredirect",
+  "/registration",
+  "/forgotpassword",
+  "/signin",
+  "/checkemail",
+  "/verify",
+  "/setupmfa",
+  "/notFound",
+  "/one-time-payment",
+];
 
+function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const requiresAuthentication = !unauthenticatedPaths.includes(location.pathname);
+
+  const logOut = () => setIsLoggedIn(false);
+  const mainStyle = () => (unauthenticatedPaths.includes(location.pathname) ? "external" : "");
 
   return (
     <>
-      <div>
-        <SvgAdd />
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
+      {requiresAuthentication && <Header logOut={logOut} />}
+      <ScrollToTop />
+      <main className={mainStyle()}>
+        <Routes>
+          <Route path="/" Component={Login} />
+          <Route path="/login" Component={Login} />
+        </Routes>
+      </main>
+      <Footer />
     </>
   );
 }
