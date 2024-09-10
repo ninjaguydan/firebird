@@ -41,7 +41,7 @@ export default function LoginForm({ signIn, formValues, handleChange, error }: P
           labelIcon={<SvgLock />}
         />
         {error !== "" && <p className="error">{error}</p>}
-        <Link to={"/forgotpassword"} className="forgot-pw-link">
+        <Link to={"/forgot-password"} className="forgot-pw-link">
           Forgot password?
         </Link>
       </div>
@@ -50,15 +50,15 @@ export default function LoginForm({ signIn, formValues, handleChange, error }: P
           className="btn-nest primary"
           disabled={error !== "" || formValues.username === "" || formValues.password === ""}
         >
-          Sign in
+          Sign In
         </button>
         <p>Don't have an account?</p>
         <NavLink to={"/registration"} className={"btn-nest secondary"}>
-          Register now
+          Register Now
         </NavLink>
         <p className="or-row">or</p>
         <Link to={"/one-time-payment"} className="btn-nest primary">
-          Make a one-time guest payment
+          Make One-time Guest Payment
         </Link>
       </div>
     </form>

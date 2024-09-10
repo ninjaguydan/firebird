@@ -1,0 +1,50 @@
+.generic-modal.error-modal {
+  max-width: 320px;
+  padding: 0;
+  border-radius: 0.5rem;
+  gap: 0;
+}
+.error-modal .content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.error-modal svg {
+  width: 90px;
+  height: 90px;
+}
+.generic-modal.error-modal h1 {
+  font-size: 1.25rem;
+  text-align: center;
+  line-height: 1.465rem;
+}
+.error-modal p {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--shade-3);
+  max-width: 36ch;
+}
+.error-modal p a {
+  color: var(--chill-wave-dark);
+  font-weight: 600;
+}
+.error-modal button {
+  border: unset;
+  border-radius: 0 0 0.5rem 0.5rem;
+  padding: 1rem;
+  background-color: white;
+  border-top: 1px solid var(--shade-7);
+  font-weight: 600;
+  color: var(--shade-2);
+  min-height: 64px;
+}
+.error-modal button:hover,
+.error-modal button:focus-visible {
+  background-color: var(--shade-7);
+}
+.error-modal button:active {
+  background-color: var(--shade-6);
+}

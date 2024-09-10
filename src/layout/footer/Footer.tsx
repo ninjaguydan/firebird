@@ -6,9 +6,9 @@ import SvgLinkedin from "assets/icons/SvgLinkedin";
 import SvgX from "assets/icons/SvgX";
 import SvgYoutube from "assets/icons/SvgYoutube";
 
-import FullLogo from "src/components/buttons/fullLogo/FullLogo";
+import FullLogo from "components/buttons/fullLogo/FullLogo";
 
-import "src/layout/footer/footer.css";
+import "layout/footer/footer.css";
 
 export default function Footer() {
   return (
@@ -20,7 +20,7 @@ export default function Footer() {
             aria-label="Facebook"
             target="_blank"
             rel="noopener noreferrer"
-            href={"https://www.facebook.com/PekinInsurance"}
+            href={"https://www.facebook.com/dthompson0190"}
           >
             <SvgFacebook />
           </a>
@@ -28,7 +28,7 @@ export default function Footer() {
             aria-label="X, formerly Twitter"
             target="_blank"
             rel="noopener noreferrer"
-            href={"https://x.com/pekininsurance"}
+            href={"https://x.com/ninjaguydan_"}
           >
             <SvgX />
           </a>
@@ -36,7 +36,7 @@ export default function Footer() {
             aria-label="Instagram"
             target="_blank"
             rel="noopener noreferrer"
-            href={"https://www.instagram.com/pekin_insurance"}
+            href={"https://www.instagram.com/ninjaguydan/"}
           >
             <SvgInstagram />
           </a>
@@ -44,7 +44,7 @@ export default function Footer() {
             aria-label="LinkedIn"
             target="_blank"
             rel="noopener noreferrer"
-            href={"https://www.linkedin.com/company/pekin-insurance"}
+            href={"https://www.linkedin.com/in/dthompson0190/"}
           >
             <SvgLinkedin />
           </a>
@@ -52,7 +52,7 @@ export default function Footer() {
             aria-label="Youtube"
             target="_blank"
             rel="noopener noreferrer"
-            href={"https://www.youtube.com/user/PekinInsurance"}
+            href={"https://www.youtube.com/@NinjaGuyDan_"}
           >
             <SvgYoutube />
           </a>
@@ -77,35 +77,19 @@ export default function Footer() {
         <nav className="col quick-links">
           <h3>Quick links</h3>
           <div className="link-group">
-            <a
-              href="https://www.pekininsurance.com/find-an-agent"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="" target="_blank" rel="noopener noreferrer">
               Find An Agent
             </a>
             <div className="vr"></div>
-            <a
-              href="https://www.pekininsurance.com/client-service/customer-center/file-a-claim"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="" target="_blank" rel="noopener noreferrer">
               Find A Claim
             </a>
             <div className="vr"></div>
-            <a
-              href="https://webpay.1tech.net/PayMyBill/Account/Login"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="" target="_blank" rel="noopener noreferrer">
               Pay A Bill
             </a>
             <div className="vr"></div>
-            <a
-              href="https://www.pekininsurance.com/about/company"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="" target="_blank" rel="noopener noreferrer">
               About Us
             </a>
           </div>

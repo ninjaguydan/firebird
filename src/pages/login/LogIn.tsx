@@ -1,15 +1,22 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 import billingLogin from "assets/images/bill-login.png";
 import learningLogin from "assets/images/learning-login.png";
 import sunbathingLogin from "assets/images/sunbathing-login.png";
 
+import LoginForm from "pages/login/components/LoginForm";
+import Loader from "src/components/loaders/Loader";
+
 import Hero from "layout/hero/Hero";
 
-import LoginForm from "pages/login/LoginForm";
 import "pages/login/login.css";
 
-export default function Login() {
+type LoginProps = {
+  logIn: () => void;
+};
+
+export default function Login({ logIn }: LoginProps) {
+  const [loadingStep, setLoadingStep] = useState(false);
   const [formValues, setFormValues] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
 
@@ -17,10 +24,22 @@ export default function Login() {
     setFormValues({ ...formValues, [event.target.id]: event.target.value });
   };
 
-  const handleSignIn = () => {};
+  const handleSignIn = (e: FormEvent<HTMLElement>) => {
+    e.preventDefault();
+    setLoadingStep(true);
+    authenticateUser();
+  };
+
+  const authenticateUser = () => {
+    setTimeout(() => {
+      logIn();
+      setLoadingStep(false);
+    }, 3000);
+  };
 
   return (
     <div id="login-page">
+      {loadingStep && <Loader />}
       <Hero />
       <section className="login-actions">
         <LoginForm
