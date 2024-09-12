@@ -1,0 +1,15 @@
+.generic-modal {
+  padding: 1.5rem;
+  gap: 1.5rem;
+}
+.generic-modal h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.generic-modal p {
+  font-size: 1rem !important;
+  line-height: 1.5rem;
+}
+.generic-modal .btn-group {
+  gap: 1rem;
+}

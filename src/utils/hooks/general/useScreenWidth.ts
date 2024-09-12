@@ -14,6 +14,7 @@ export function useScreenWidth() {
         setBreakpoint("DESKTOP");
       }
     };
+    handleResize();
 
     window.addEventListener("resize", handleResize);
 

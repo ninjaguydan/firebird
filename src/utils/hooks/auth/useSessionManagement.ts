@@ -8,7 +8,7 @@ export default function useSesionManagement(isLoggedIn: boolean) {
     if (!isLoggedIn) {
       navigate("/login");
     } else {
-      navigate("/home");
+      navigate("/verify");
     }
   }, [isLoggedIn]);
 }

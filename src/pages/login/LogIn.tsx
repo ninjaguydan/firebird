@@ -17,7 +17,7 @@ type LoginProps = {
 
 export default function Login({ logIn }: LoginProps) {
   const [loadingStep, setLoadingStep] = useState(false);
-  const [formValues, setFormValues] = useState({ username: "", password: "" });
+  const [formValues, setFormValues] = useState({ username: "heisenberg08", password: "" });
   const [error, setError] = useState("");
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

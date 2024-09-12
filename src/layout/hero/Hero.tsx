@@ -16,10 +16,7 @@ type HeroProps = {
   img?: JSX.Element;
 };
 
-export default function Hero({
-  subheader = "Why we do what we do -",
-  img = DefaultIMG,
-}: HeroProps) {
+export default function Hero({ subheader = "Why we do what we do", img = DefaultIMG }: HeroProps) {
   const path = location.pathname;
   const fitContent = () => (path === "/registration" ? "fit-content" : "");
   const breakpoint = useScreenWidth();
@@ -27,13 +24,13 @@ export default function Hero({
   return (
     <section className={`hero ${fitContent()}`}>
       {img}
-      {breakpoint === "MOBILE" ? (
+      {breakpoint !== "DESKTOP" ? (
         <FullLogo vertical className="mobile-logo" />
       ) : (
         <div className="hero-text">
           <SvgFirebird />
           <h1>
-            Customer Portal <br /> <span>{subheader}</span>
+            MyFI Customer Portal <br /> <span>{subheader}</span>
           </h1>
         </div>
       )}

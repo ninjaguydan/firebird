@@ -14,7 +14,7 @@ type Props = {
 export default function PasswordRequirements({ value }: Props) {
   return (
     <div className="pw-check">
-      <h2>Password must:</h2>
+      <h3>Password must:</h3>
       {PW_ERRORS.map((criteria) => (
         <p key={criteria.label}>
           {criteria.check.test(value) ? <SvgSuccess fill="#709F38" /> : <SvgClose fill="#C61010" />}

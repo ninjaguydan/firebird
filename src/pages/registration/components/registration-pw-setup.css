@@ -1,0 +1,69 @@
+.pw-setup {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.info-group {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--shade-3);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-group p {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--shade-7);
+}
+
+.info-group span {
+  color: var(--chill-wave-dark);
+  margin-right: 0.25rem;
+}
+
+.email-readable {
+  padding-left: 0rem;
+}
+
+.password-setup-fields {
+  display: inline-flex;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.password-setup-sub-heading {
+  width: 100%;
+  color: #1c1b1f;
+  font-size: 20px;
+  font-family: Roboto;
+  font-weight: 500;
+  word-wrap: break-word;
+}
+
+.email-error {
+  margin-right: 10% !important;
+}
+
+.password-setup-fields span.error-message {
+  color: var(--error);
+  display: grid;
+  justify-content: end;
+}
+
+.password-setup-fields .registration-card-buttons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  gap: 0.5rem;
+}
+
+@media only screen and (max-width: 491px) {
+  .password-setup-fields span.error-message {
+    text-align: left;
+  }
+}

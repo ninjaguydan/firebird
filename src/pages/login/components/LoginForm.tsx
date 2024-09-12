@@ -19,7 +19,7 @@ export default function LoginForm({ signIn, formValues, handleChange, error }: P
   return (
     <form data-testid="login-form" className="login-card" onSubmit={(e) => signIn(e)}>
       <FullLogo className="login-logo" />
-      <h2 className="login-card-title">MyPI sign in</h2>
+      <h2 className="login-card-title">MyFI sign in</h2>
       <div className="input-group">
         <NestInput
           label="Username"

@@ -20,7 +20,7 @@ export default function EnterUsernameForm({
   return (
     <article className="login-card forgot-password">
       <FullLogo className="login-logo" />
-      <h1 className="login-card-title">Password recovery</h1>
+      <h1 className="login-card-title">Password Recovery</h1>
       <p className="description">
         Enter your username to receive a password recovery code. The code will be sent to your
         email.
