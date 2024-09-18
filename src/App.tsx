@@ -25,7 +25,7 @@ const unauthenticatedPaths = [
   "/verify",
   "/setu-pmfa",
   "/notFound",
-  "/one-time-payment",
+  "/guest-payment",
 ];
 
 function App() {

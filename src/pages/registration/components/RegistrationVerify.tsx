@@ -4,6 +4,7 @@ import SvgCheck from "assets/icons/SvgCheck";
 import SvgClose from "assets/icons/SvgClose";
 import SvgSuccess from "assets/icons/SvgSuccess";
 
+import ResentCode from "src/components/common/resentCode/ResentCode";
 import NestInput from "src/components/inputs/nestInput/NestInput";
 import Loader from "src/components/loaders/Loader";
 import ErrorModal from "src/components/modals/errorModal/ErrorModal";
@@ -190,10 +191,7 @@ export default function RegistrationEmailVerfy({
 
           <div className="vr"></div>
           {resentPasscode ? (
-            <div className="resend-otp-action">
-              <SvgSuccess />
-              <p>Another code has been sent</p>
-            </div>
+            <ResentCode />
           ) : (
             <button
               type="button"

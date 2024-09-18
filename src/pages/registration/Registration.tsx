@@ -1,6 +1,8 @@
 import { SetStateAction, createContext, useState } from "react";
 import { useNavigate } from "react-router";
 
+import MFAComplete from "../mfa/components/registration/MFAComplete";
+import MFASetup from "../mfa/components/registration/MFASetup";
 import RegistrationCard from "./components/RegistrationCard";
 import RegistrationHeader from "./components/RegistrationHeader";
 import RegistrationPWSetup from "./components/RegistrationPWSetup";
@@ -111,17 +113,10 @@ export default function Registration({}) {
             />
           )}
 
-          {currentStep === MFA && (
-            <MFASetup
-              isMethodFound={isMethodFound}
-              setIsMethodFound={setIsMethodFound}
-              onRedirect={onRedirect}
-              setShowMFAAppList={setShowMFAAppList}
-            />
-          )}
+          {currentStep === MFA && <MFASetup onRedirect={onRedirect} />}
         </ContactContext.Provider>
 
-        {currentStep === COMPLETE && <MFAComplete setCurrentStep={setCurrentStep} />}
+        {currentStep === COMPLETE && <MFAComplete />}
       </StepContext.Provider>
     </div>
   );

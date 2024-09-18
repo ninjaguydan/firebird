@@ -1,0 +1,55 @@
+.multi-inputs {
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+  max-width: 12.5rem;
+  position: relative;
+  border: unset;
+}
+
+.multi-inputs.error {
+  display: flex !important;
+  margin-bottom: 1rem;
+}
+
+.multi-inputs.phone {
+  max-width: 258px;
+  gap: 0.25rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.multi-inputs.phone span {
+  position: relative;
+  top: 6px;
+}
+
+.multi-inputs .code-input {
+  width: 100%;
+  height: 2rem;
+  border: unset;
+  background-color: rgba(38, 160, 194, 0.2);
+  text-align: center;
+}
+
+.multi-inputs.error .code-input {
+  border: 1px solid var(--error);
+}
+
+.multi-inputs.phone .code-input {
+  background-color: unset;
+  border-bottom: 1px solid black;
+}
+
+.multi-inputs .code-input:focus {
+  outline: 2px solid var(--chill-wave-dark);
+}
+
+.multi-inputs small.error {
+  color: var(--error);
+  position: absolute;
+  top: 1.8rem;
+  width: 100%;
+  text-align: center;
+}

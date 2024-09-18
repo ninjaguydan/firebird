@@ -1,28 +1,22 @@
-.resend-code-action {
+.resend-otp-action {
   width: 100%;
   height: 3rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.25rem;
 }
-
-.resend-code-action svg {
-  width: 0.85rem;
-  height: 0.85rem;
+.resend-otp-action svg {
+  width: 0.75rem;
+  height: 0.75rem;
 }
-
-.resend-code-action svg path {
+.resend-otp-action svg path {
   fill: var(--chlorophyllis-dark);
 }
-
-.resend-code-action p {
-  font-size: 0.85rem;
+.resend-otp-action p {
+  font-size: 0.75rem;
   font-weight: 600;
   text-align: center;
-  margin-top: 0rem !important;
-  margin-bottom: 0rem !important;
   color: var(--shade-3);
-  align-content: center;
 }

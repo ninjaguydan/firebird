@@ -57,7 +57,7 @@ export default function LoginForm({ signIn, formValues, handleChange, error }: P
           Register Now
         </NavLink>
         <p className="or-row">or</p>
-        <Link to={"/one-time-payment"} className="btn-nest primary">
+        <Link to={"/guest-payment"} className="btn-nest primary">
           Make One-time Guest Payment
         </Link>
       </div>

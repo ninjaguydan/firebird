@@ -1,0 +1,54 @@
+.mfa-btn {
+  background-color: unset;
+  width: 100%;
+  min-height: 84px;
+  max-width: 320px;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--chill-wave-dark);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.mfa-btn:hover,
+.mfa-btn:focus-visible {
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+  outline: 1px solid var(--chill-wave-dark);
+  scale: 1.025;
+}
+.mfa-btn.selected {
+  background-color: var(--shade-8);
+  outline: 1px solid var(--chill-wave-dark) !important;
+}
+.mfa-btn svg {
+  width: 3rem;
+  height: 3rem;
+}
+.btn-content {
+  text-align: left;
+}
+.btn-content h3 {
+  font-family: "Source Sans Pro";
+  font-weight: 600;
+  color: var(--veruca);
+  font-size: 1rem;
+  margin-bottom: 0.125rem;
+}
+.btn-content p {
+  color: var(--shade-3);
+}
+.method .btn-content p {
+  color: var(--shade-3);
+  line-height: normal;
+  text-align: left;
+}
+.mfa-btn.auth svg {
+  width: 2rem;
+  height: 2rem;
+}
+.mfa-app-list-btn {
+  border: none;
+  background: transparent;
+  padding-left: 0.125rem;
+  color: var(--primary-button-hover);
+}

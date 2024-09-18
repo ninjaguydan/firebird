@@ -4,7 +4,7 @@ import "src/components/common/resentCode/resent-code.css";
 
 export default function ResentCode() {
   return (
-    <div className="resend-code-action">
+    <div className="resend-otp-action">
       <SvgSuccess />
       <p>Another code has been sent</p>
     </div>

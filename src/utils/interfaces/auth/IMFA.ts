@@ -39,3 +39,33 @@ export const MFA_METHODS = {
     desc: "Use an authenticator app (like Google authenticator) to authenticate.",
   },
 };
+
+export const demoDevices: IDevice[] = [
+  {
+    id: "c7f8b0ef-49c0-b009-8d0f8be865df",
+    phone: "*******18",
+    status: "ACTIVE",
+    type: "SMS",
+    usableStatus: { status: "ENABLED" },
+  },
+  {
+    id: "c7f8b0ef-67gb-b009-8d0f8be865df",
+    email: "ww****@wynnehs.edu",
+    status: "ACTIVE",
+    type: "EMAIL",
+    usableStatus: { status: "ENABLED" },
+  },
+  {
+    id: "c7f8b0ef-12pq-b009-8d0f8be865df",
+    phone: "*******89",
+    status: "ACTIVE",
+    type: "VOICE",
+    usableStatus: { status: "ENABLED" },
+  },
+  {
+    id: "c7f8b0ef-vvvv-b009-8d0f8be865df",
+    status: "ACTIVE",
+    type: "TOTP",
+    usableStatus: { status: "ENABLED" },
+  },
+];
