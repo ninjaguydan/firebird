@@ -1,0 +1,228 @@
+/*=======================================
+Payment Input Group
+========================================*/
+.payment-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.payment-col:first-child {
+  margin: 0;
+}
+
+.payment-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.payment-cell .btn-nest {
+  margin: 0;
+}
+
+.payment-cell {
+  /* outline: 1px dotted magenta; */
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.payment-cell.total {
+  display: inline-flex;
+}
+
+.payment-cell.total p {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.payment-cell.total p.non-zero-value {
+  color: var(--chill-wave-dark);
+}
+
+.payment-cell.total p.zeo-value {
+  color: var(--magneato);
+}
+
+.payment-cell.total label.zeo-value {
+  color: var(--magneato);
+}
+
+.payment-cell.total label.non-zeo-value {
+  color: var(--veruca);
+}
+
+.payment-cell:nth-child(5) {
+  padding: 0.5rem 0;
+}
+
+.payment-cell.selected {
+  background-color: var(--shade-7);
+}
+
+.payment-cell label {
+  font-weight: bold;
+  color: var(--veruca);
+}
+
+.payment-cell p {
+  font-family: "Roboto";
+  color: var(--shade-3);
+}
+
+.payment-cell.selected p {
+  color: var(--shade-2);
+  font-weight: bold;
+}
+
+.payment-cell input[type="text"] {
+  border-radius: 0.3125rem;
+  border: 2px solid var(--shade-5);
+  padding: 0.5rem 0.75rem;
+  color: var(--shade-4);
+  width: calc(100% - 2rem);
+}
+
+.payment-cell input[type="text"]:disabled {
+  border: 2px solid var(--shade-7);
+  color: var(--shade-5);
+}
+
+.payment-cell:not(.total) p,
+.payment-cell input[type="text"] {
+  margin-left: 2rem;
+}
+
+.label-w-tooptip {
+  display: flex;
+  align-items: center;
+}
+
+.label-tooltip {
+  padding: 0 !important;
+}
+
+.label-tooltip svg {
+  height: 1rem;
+  width: 1rem;
+}
+
+.label-tooltip svg path {
+  fill: var(--chill-wave);
+}
+
+.label-tooltip:hover svg path {
+  fill: var(--chill-wave-dark);
+}
+
+@media only screen and (min-width: 491px) {
+  /*=======================================
+    Payment Input Group
+  ========================================*/
+  .payment-selection {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .payment-cell {
+    width: calc(50% - 8px);
+  }
+  .payment-cell:nth-child(3) {
+    width: 100%;
+  }
+  .payment-cell .btn-nest {
+    min-width: 170px;
+  }
+  .payment-selection.lh {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+  .payment-selection.lh .payment-cell {
+    width: 100%;
+    grid-column: span 6;
+  }
+}
+
+@media only screen and (min-width: 721px) {
+  .payment-cell,
+  .payment-cell:nth-child(3) {
+    width: calc(33% - 9px);
+  }
+  .payment-cell:nth-child(4),
+  .payment-cell:nth-child(5) {
+    width: calc(50% - 8px);
+    align-items: flex-end;
+    width: fit-content;
+  }
+  .payment-selection.lh .payment-cell:nth-child(4) {
+    align-items: flex-start;
+  }
+}
+
+@media only screen and (min-width: 1160px) {
+  .payment-col {
+    margin: 0;
+  }
+  .payment-col:first-child {
+    flex-grow: 1;
+  }
+  .bill-policy-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .payment-selection {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  .payment-cell {
+    width: 20%;
+    align-items: flex-start !important;
+  }
+  .payment-cell:nth-child(3) {
+    width: 20%;
+  }
+  .payment-cell:nth-child(5) {
+    align-self: center;
+  }
+}
+
+.total-payment-amount-notice {
+  color: var(--magneato);
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.875rem;
+  font-family: "Source Sans Pro";
+  font-weight: 600;
+  line-height: 1.3125rem;
+  margin-top: -1.5rem;
+}
+
+@media only screen and (max-width: 720px) {
+  .total-payment-amount-notice {
+    position: relative;
+    top: -5.875rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: -1rem;
+  }
+
+  .payment-cell.total {
+    display: inline-flex;
+    flex-direction: row;
+    padding-bottom: 0rem;
+    margin-bottom: 0.5rem;
+    align-items: center;
+  }
+
+  .payment-cell.total p.zeo-value {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+}

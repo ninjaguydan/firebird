@@ -6,7 +6,7 @@ import SvgLock from "assets/icons/SvgLock";
 import SvgUser from "assets/icons/SvgUser";
 
 import NestInput from "components/inputs/nestInput/NestInput";
-import FullLogo from "src/components/buttons/fullLogo/FullLogo";
+import FullLogo from "src/components/common/fullLogo/FullLogo";
 
 type Props = {
   signIn: (e: FormEvent<HTMLElement>) => void | Promise<void>;

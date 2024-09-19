@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import FullLogo from "src/components/buttons/fullLogo/FullLogo";
+import FullLogo from "src/components/common/fullLogo/FullLogo";
 import NestInput from "src/components/inputs/nestInput/NestInput";
 
 type Props = {

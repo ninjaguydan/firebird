@@ -1,0 +1,112 @@
+.bill-policy-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bill-policy-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.bill-policy-details hr {
+  width: 100%;
+  border-color: var(--summer-break);
+}
+
+.bill-policy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.bill-policy-details .detail-header {
+  font-size: 1rem;
+  color: var(--chill-wave-dark);
+}
+
+.lh-total-payment {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--chill-wave-dark);
+}
+
+.lh-total-payment .detail-row {
+  border: unset;
+}
+
+.lh-total-payment .detail-row .detail-header {
+  font-weight: 600;
+  color: var(--veruca);
+  font-size: 1.125rem;
+}
+
+.lh-total-payment .detail-row .detail-header.zero-value {
+  color: var(--magneato);
+}
+
+.lh-total-payment .detail-row .detail-data {
+  font-family: "Roboto";
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--chill-wave-dark);
+}
+
+.lh-total-payment .detail-row .detail-data.zero-value {
+  color: var(--magneato);
+}
+
+.lh-total-payment .payment-cell {
+  align-items: center;
+}
+
+@media only screen and (min-width: 721px) {
+  .bill-policy {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .bill-policy-details hr {
+    border-color: var(--shade-8);
+  }
+  .lh-total-payment {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2rem;
+  }
+  .lh-total-payment .detail-row {
+    width: fit-content;
+    justify-content: flex-start;
+  }
+  .lh-total-payment .payment-cell {
+    width: 170px;
+  }
+}
+
+.total-payment-amount-notice.lh {
+  margin-top: -0.5rem;
+}
+
+@media only screen and (max-width: 720px) {
+  .total-payment-amount-notice.lh {
+    position: relative;
+    top: -6.375rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: -1.5rem;
+  }
+
+  .detail-row.total.zero-value {
+    display: inline-flex;
+    flex-direction: row;
+    padding-bottom: 0rem;
+    margin-bottom: 2.5rem;
+  }
+}

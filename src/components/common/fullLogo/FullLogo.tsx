@@ -1,6 +1,6 @@
 import SvgFirebird from "assets/icons/SvgFirebird";
 
-import "src/components/buttons/fullLogo/full-logo.css";
+import "src/components/common/fullLogo/full-logo.css";
 
 type fullLogoProps = {
   vertical?: boolean;

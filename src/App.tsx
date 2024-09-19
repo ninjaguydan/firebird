@@ -6,6 +6,7 @@ import Header from "layout/header/Header";
 
 import MFA from "./pages/mfa/MFA";
 import ForgotPassword from "pages/forgotPassword/ForgotPassword";
+import GuestPayment from "pages/guestPayment/GuestPayment";
 import Login from "pages/login/LogIn";
 import Registration from "pages/registration/Registration";
 
@@ -48,6 +49,7 @@ function App() {
           <Route path="forgot-password" Component={ForgotPassword} />
           <Route path="/registration" Component={Registration} />
           <Route path="verify" Component={MFA} />
+          <Route path="/guest-payment" Component={GuestPayment} />
         </Routes>
       </main>
       <Footer />

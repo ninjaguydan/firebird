@@ -7,8 +7,8 @@ import SvgPolicy from "assets/icons/SvgPolicy";
 import SvgSettings from "assets/icons/SvgSettings";
 import SvgSignOut from "assets/icons/SvgSignOut";
 
-import FullLogo from "components/buttons/fullLogo/FullLogo";
 import NestMenuBtn from "components/buttons/menuBtn/MenuBtn";
+import FullLogo from "src/components/common/fullLogo/FullLogo";
 
 import "src/layout/header/header.css";
 

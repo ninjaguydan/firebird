@@ -1,0 +1,15 @@
+.back-btn {
+  position: static;
+  top: 1rem;
+  left: 1rem;
+  color: var(--summer-break-dark);
+}
+.back-btn path {
+  fill: var(--summer-break-dark);
+}
+@media only screen and (min-width: 491px) {
+  .back-btn {
+    position: absolute;
+    width: fit-content !important;
+  }
+}

@@ -19,4 +19,5 @@
   font-weight: 600;
   text-align: center;
   color: var(--shade-3);
+  margin: 0 !important;
 }

@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import SvgSuccess from "src/assets/icons/SvgSuccess";
 
-import { IRegistrationSteps, MFA } from "src/utils/interfaces/registration/IRegistrationSteps";
-
 export default function MFAComplete() {
   const navigate = useNavigate();
 

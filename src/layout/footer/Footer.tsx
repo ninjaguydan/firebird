@@ -6,7 +6,7 @@ import SvgLinkedin from "assets/icons/SvgLinkedin";
 import SvgX from "assets/icons/SvgX";
 import SvgYoutube from "assets/icons/SvgYoutube";
 
-import FullLogo from "components/buttons/fullLogo/FullLogo";
+import FullLogo from "src/components/common/fullLogo/FullLogo";
 
 import "layout/footer/footer.css";
 

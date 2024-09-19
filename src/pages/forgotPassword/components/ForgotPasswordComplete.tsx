@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 
 import SvgSuccess from "src/assets/icons/SvgSuccess";
 
-import FullLogo from "src/components/buttons/fullLogo/FullLogo";
+import FullLogo from "src/components/common/fullLogo/FullLogo";
 
 export default function ForgotPasswordComplete() {
   const navigate = useNavigate();

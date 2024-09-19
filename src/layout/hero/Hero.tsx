@@ -1,7 +1,7 @@
 import loginBackground from "assets/images/loginBackground.png";
 import SvgFirebird from "src/assets/icons/SvgFirebird";
 
-import FullLogo from "src/components/buttons/fullLogo/FullLogo";
+import FullLogo from "src/components/common/fullLogo/FullLogo";
 
 import "src/layout/hero/hero.css";
 

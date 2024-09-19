@@ -1,0 +1,55 @@
+button.collapse-btn {
+  border: unset;
+  background: unset;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  font-family: "Roboto";
+  font-weight: 600;
+  color: var(--summer-break-dark);
+}
+button.collapse-btn svg {
+  width: 0.75rem;
+  height: 0.75rem;
+  transform: rotate(-90deg);
+  transition: all 0.2s;
+}
+button.collapse-btn.open svg {
+  transform: rotate(90deg);
+}
+button.collapse-btn svg path {
+  fill: var(--summer-break-dark);
+}
+/*==================
+ALT Button
+===================*/
+button.toggle-details {
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translate(-50%);
+  border: unset;
+  background: unset;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: fit-content;
+  padding: 0.5rem 1.5rem;
+  color: var(--shade-3);
+  font-weight: 600;
+  border: 1px solid var(--shade-6);
+  border-radius: 1.5rem;
+}
+button.toggle-details svg {
+  height: 0.75rem;
+  width: 0.75rem;
+  transform: rotate(-90deg);
+  transition: all 0.2s;
+}
+button.toggle-details.expanded svg {
+  transform: rotate(90deg);
+}

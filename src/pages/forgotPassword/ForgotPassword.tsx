@@ -68,14 +68,17 @@ export default function ForgotPassword() {
 
   const handleSendCode = (e: React.FormEvent, action: string) => {
     e.preventDefault();
-    setLoadingStep(true);
-
     if (action === "resendCode") {
       setIsCodeSent(true);
+      return;
     }
 
-    setLoadingStep(false);
-    setStep("STEP2");
+    setLoadingStep(true);
+
+    setTimeout(() => {
+      setLoadingStep(false);
+      setStep("STEP2");
+    }, 3000);
   };
 
   const handleFinish = (e: React.FormEvent) => {

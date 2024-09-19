@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { Link } from "react-router-dom";
 
-import FullLogo from "src/components/buttons/fullLogo/FullLogo";
+import FullLogo from "src/components/common/fullLogo/FullLogo";
 import PasswordRequirements from "src/components/common/passwordRequirements/PasswordRequirements";
 import ResentCode from "src/components/common/resentCode/ResentCode";
 import NestInput from "src/components/inputs/nestInput/NestInput";
