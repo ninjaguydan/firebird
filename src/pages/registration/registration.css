@@ -132,10 +132,26 @@ span.required {
   max-width: 420px;
 }
 .email-verify form .email-input-group {
+  display: flex;
   width: 100%;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
 }
+
+.edit-email-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.edit-email-btn-group button.icon-btn {
+  position: static;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 .contact-group {
   text-align: center;
 }

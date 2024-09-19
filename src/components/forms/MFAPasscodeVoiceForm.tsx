@@ -52,11 +52,13 @@ export default function MFAPasscodeVoiceForm({
       </div>
       <div className="link-text-group">
         {handleChangeNumber && (
-          <button className="btn-nest ghost" type="button" onClick={handleChangeNumber}>
-            Change number
-          </button>
+          <>
+            <button className="btn-nest ghost" type="button" onClick={handleChangeNumber}>
+              Change number
+            </button>
+            <div className="vr"></div>
+          </>
         )}
-        <div className="vr"></div>
         {resentPasscode ? (
           <div className="resend-otp-action">
             <SvgSuccess />

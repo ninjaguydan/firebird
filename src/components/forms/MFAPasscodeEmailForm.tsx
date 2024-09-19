@@ -51,11 +51,13 @@ export default function MFAPasscodeEmailForm({
       </div>
       <div className="link-text-group">
         {handleChangeEmail && (
-          <button className="btn-nest ghost" type="button" onClick={handleChangeEmail}>
-            Change email
-          </button>
+          <>
+            <button className="btn-nest ghost" type="button" onClick={handleChangeEmail}>
+              Change email
+            </button>
+            <div className="vr"></div>
+          </>
         )}
-        <div className="vr"></div>
         {resentPasscode ? (
           <ResentCode />
         ) : (

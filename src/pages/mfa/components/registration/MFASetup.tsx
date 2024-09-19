@@ -8,7 +8,10 @@ import { ContactContext } from "src/pages/registration/Registration";
 import { AUTH_APP, EMAIL, IMfaMethods, TEXT_MESSAGE, VOICE } from "src/utils/interfaces/auth/IMFA";
 
 import MFAList from "../MFAList";
-import MFASMS from "./sms/MFASMS";
+import MFAApp from "./MFAApp";
+import MFAEmail from "./MFAEmail";
+import MFASMS from "./MFASMS";
+import MFAVoice from "./MFAVoice";
 
 export const CancelContext = createContext(() => {});
 

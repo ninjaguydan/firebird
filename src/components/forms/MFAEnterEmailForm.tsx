@@ -15,7 +15,7 @@ type EmailEnterFormProps = {
   mfaHistory?: "NEW" | "EXISTING" | "EDIT";
 };
 
-export default function MFAEmailEnterForm({
+export default function MFAEnterEmailForm({
   handleNext,
   handleCancel,
   handleChange,

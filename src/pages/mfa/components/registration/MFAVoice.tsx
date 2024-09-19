@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import SvgMessage from "assets/icons/SvgMessage";
+import SvgPhone from "src/assets/icons/SvgPhone";
 
 import MFAPEnterPhoneForm from "src/components/forms/MFAEnterPhoneForm";
-import MFAPasscodeSMSForm from "src/components/forms/MFAPasscodeSMSForm";
+import MFAPasscodeVoiceForm from "src/components/forms/MFAPasscodeVoiceForm";
 import Loader from "src/components/loaders/Loader";
 
 import { StepContext } from "src/pages/registration/Registration";
@@ -11,14 +11,14 @@ import { StepContext } from "src/pages/registration/Registration";
 import { ContactInfo } from "src/utils/interfaces/registration/IContactInfo";
 import { COMPLETE } from "src/utils/interfaces/registration/IRegistrationSteps";
 
-import { CancelContext } from "../MFASetup";
+import { CancelContext } from "./MFASetup";
 
-type MFASmsProps = {
+type MFAVoiceProps = {
   contact: ContactInfo;
   onRedirect: () => void;
 };
 
-export default function MFASMS({ contact, onRedirect }: MFASmsProps) {
+export default function MFAVoice({ contact, onRedirect }: MFAVoiceProps) {
   const [passcode, setPasscode] = useState<string | null>(null);
   const [defaultCode, setDefaultCode] = useState<string | undefined>(undefined);
   const [passcodeReady, setPasscodeReady] = useState(false);
@@ -67,8 +67,8 @@ export default function MFASMS({ contact, onRedirect }: MFASmsProps) {
       {loadingStep && <Loader />}
 
       <header className="method-header">
-        <SvgMessage />
-        <h2>Text Message</h2>
+        <SvgPhone />
+        <h2>Voice</h2>
       </header>
       {!passcodeReady ? (
         <MFAPEnterPhoneForm
@@ -80,7 +80,7 @@ export default function MFASMS({ contact, onRedirect }: MFASmsProps) {
           onRedirect={onRedirect}
         />
       ) : (
-        <MFAPasscodeSMSForm
+        <MFAPasscodeVoiceForm
           setCode={setPasscode}
           code={passcode}
           loginMfaStatus={"EXISTING"}

@@ -14,7 +14,7 @@ export default function MFAComplete() {
       <h1>You&apos;re all set!</h1>
       <p>Make sure to note your authentication methods and keep your passwords secure.</p>
       <button onClick={() => navigate("/login")} className="btn-nest primary">
-        Continue to MyPI
+        Continue to MyFI
       </button>
     </section>
   );
