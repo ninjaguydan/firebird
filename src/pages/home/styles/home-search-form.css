@@ -1,0 +1,63 @@
+.add-policy-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+.add-policy-form .policy-search {
+  width: 9rem;
+  height: 9rem;
+}
+.add-policy-form .policy-search path {
+  fill: var(--shade-6);
+}
+.add-policy-form p {
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+.add-policy-form .settings-info {
+  justify-content: center;
+  margin: 0;
+}
+.add-policy-form .settings-info small {
+  width: 100%;
+}
+.radio-group,
+.add-policy-form .input-group {
+  width: 100%;
+  max-width: 710px;
+  display: flex;
+}
+.add-policy-form .policy-selection {
+  width: 100%;
+  max-width: 400px;
+}
+.add-policy-form .input-group {
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.add-policy-form .btn-group {
+  width: 100%;
+  max-width: 400px;
+}
+@media only screen and (min-width: 421px) {
+  .add-policy-form .input-group {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+  .add-policy-form .input-group .nest-form-group:first-child {
+    grid-column: span 8;
+  }
+  .add-policy-form .input-group .nest-form-group:last-child {
+    grid-column: span 4;
+  }
+}
+@media only screen and (min-width: 721px) {
+  .add-policy-form.nest-card {
+    /* gap: 1rem; */
+    background-color: unset;
+    padding: 0;
+    box-shadow: unset;
+  }
+}

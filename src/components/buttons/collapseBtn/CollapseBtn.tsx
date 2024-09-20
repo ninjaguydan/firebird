@@ -2,6 +2,8 @@ import React, { SetStateAction } from "react";
 
 import SvgChevron from "src/assets/icons/SvgChevron";
 
+import "./collapse-btn.css";
+
 type BtnProps = {
   isExpanded: boolean;
   setIsExpanded: React.Dispatch<SetStateAction<boolean>>;

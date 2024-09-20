@@ -1,0 +1,90 @@
+.quick-tools-btn-group.nest-card {
+  flex-grow: 1;
+  padding: 0;
+}
+.quick-tools-btn-group a {
+  text-decoration: none;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 700;
+  color: var(--veruca);
+  flex-grow: 1;
+}
+.quick-tools-btn-group a:first-child {
+  border-radius: 0.675rem 0.675rem 0 0;
+}
+.quick-tools-btn-group a:last-child {
+  border-radius: 0 0 0.675rem 0.675rem;
+}
+.quick-tools-btn-group a svg {
+  position: relative;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.quick-tools-btn-group a svg path {
+  fill: var(--summer-break);
+}
+.quick-tools-btn-group a:hover,
+.quick-tools-btn-group a:focus-visible {
+  background-color: #26a0c238;
+}
+.quick-tools-btn-group a:active {
+  background-color: var(--chill-wave-dark);
+  color: white;
+}
+.quick-tools-btn-group a:active svg path {
+  fill: white;
+}
+.quick-tools-btn-group a p {
+  width: 90%;
+}
+.quick-tools-btn-group a span {
+  color: var(--summer-break-dark);
+}
+
+.seperator {
+  width: 100%;
+  height: 1px;
+  background: var(--shade-6);
+  z-index: 1;
+}
+.seperator:last-child {
+  display: none;
+}
+
+@media only screen and (min-width: 721px) {
+  .quick-tools-btn-group.nest-card.home {
+    background-color: unset;
+    flex-grow: unset;
+    box-shadow: unset;
+    gap: 1rem;
+  }
+  .quick-tools-btn-group.nest-card.home a {
+    background-color: white;
+    padding: 1.25rem 1rem;
+    box-shadow: var(--shadow);
+    border-radius: 0.25rem;
+  }
+  .quick-tools-btn-group.nest-card.home a:hover,
+  .quick-tools-btn-group.nest-card.home a:focus-visible {
+    background-color: #26a0c238;
+  }
+  .quick-tools-btn-group.nest-card.home a p {
+    font-family: "Roboto";
+    font-weight: 800;
+  }
+  .quick-tools-btn-group.nest-card.home a:active {
+    background-color: var(--chill-wave-dark);
+    color: white;
+  }
+  .quick-tools-btn-group.nest-card.home .seperator {
+    display: none;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .quick-tools-btn-group a {
+    padding: 1.25rem 1rem;
+  }
+}

@@ -80,12 +80,12 @@ nav .nav-item:not(:last-child) {
 
 nav .nav-item:hover,
 nav .nav-item:focus-visible {
-  color: var(--chill-wave-dark);
+  color: var(--summer-break-dark);
 }
 
 nav .nav-item.active {
   border-radius: 0.625rem;
-  background-color: #26a0c233;
+  background-color: var(--shade-7);
   margin: 0;
 }
 
@@ -96,11 +96,12 @@ nav .nav-item svg {
 
 nav .nav-item:hover svg path,
 nav .nav-item.active svg path {
-  fill: var(--chill-wave-dark);
+  fill: var(--summer-break-dark);
 }
 
 nav .nav-item p {
   white-space: nowrap;
+  font-weight: 500;
 }
 
 nav .nav-item.desktop-settings {

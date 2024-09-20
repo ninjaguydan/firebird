@@ -1,0 +1,24 @@
+.payment-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.payment-details .amount-due {
+  font-family: Roboto;
+  font-size: 3rem;
+  font-weight: 400;
+}
+.payment-details svg {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+.payment-details svg path {
+  fill: var(--chlorophyllis-dark);
+}
+.payment-details .paid {
+  font-family: Roboto;
+  color: var(--secondary-button-active);
+  font-size: 1.25rem;
+  font-weight: 500;
+}

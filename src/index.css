@@ -369,13 +369,13 @@ Card Styles
 
 .card-header.alt {
   padding-bottom: 0;
-  color: var(--veruca);
+  color: var(--shade-2);
   font-weight: 500;
   border: unset;
 }
 
 .card-header.alt svg path {
-  fill: var(--chill-wave);
+  fill: var(--primary);
 }
 
 /*================================== 
