@@ -78,7 +78,7 @@ export default function ForgotPassword() {
     setTimeout(() => {
       setLoadingStep(false);
       setStep("STEP2");
-    }, 3000);
+    }, 1000);
   };
 
   const handleFinish = (e: React.FormEvent) => {
@@ -93,7 +93,7 @@ export default function ForgotPassword() {
       setRecoveryCode("");
       setPassword({ ...password, newPassword: "", confirmNewPassword: "" });
       setStep("STEP3");
-    }, 3000);
+    }, 1000);
   };
 
   useEffect(() => {

@@ -66,7 +66,7 @@ export default function LoginMFA({
     setTimeout(() => {
       setLoadingStep(false);
       navigate("/home");
-    }, 3000);
+    }, 1000);
   };
 
   const onRedirect = () => navigate("/login");

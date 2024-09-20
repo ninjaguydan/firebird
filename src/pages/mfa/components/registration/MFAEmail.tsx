@@ -41,7 +41,7 @@ export default function MFAEmail({ contact, onRedirect }: MFAEmailProps) {
     setTimeout(() => {
       setLoadingStep(false);
       setPasscodeReady(true);
-    }, 3000);
+    }, 1000);
   };
 
   const handleSendOtp = () => setResendOtpAction(true);
@@ -54,7 +54,7 @@ export default function MFAEmail({ contact, onRedirect }: MFAEmailProps) {
     setTimeout(() => {
       setLoadingStep(false);
       setCurrentStep(COMPLETE);
-    }, 3000);
+    }, 1000);
   };
 
   useEffect(() => {

@@ -9,6 +9,8 @@ import SvgSignOut from "assets/icons/SvgSignOut";
 
 import NestMenuBtn from "components/buttons/menuBtn/MenuBtn";
 import FullLogo from "src/components/common/fullLogo/FullLogo";
+import ConfirmModal from "src/components/modals/confirmModal/ConfirmModal";
+import { signOutContent } from "src/components/modals/confirmModal/modalContent";
 
 import "src/layout/header/header.css";
 
@@ -102,12 +104,12 @@ export default function Header({ logOut }: HeaderProps) {
           <p>Sign out</p>
         </button>
       </nav>
-      {/* <ConfirmModal
+      <ConfirmModal
         isOpen={showSignOut}
         onClose={onClose}
         onConfirm={() => logOut("signOut")}
         content={signOutContent}
-      /> */}
+      />
       <div className="modal-overlay" onClick={toggleDropDown}></div>
     </header>
   );

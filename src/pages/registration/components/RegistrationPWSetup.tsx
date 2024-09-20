@@ -70,7 +70,7 @@ export default function RegistrationPWSetup({ contact, onRedirect }: PasswordSet
     setTimeout(() => {
       setLoadingStep(false);
       setCurrentStep(MFA);
-    }, 3000);
+    }, 1000);
   };
 
   return (

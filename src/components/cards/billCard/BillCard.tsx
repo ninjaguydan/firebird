@@ -107,7 +107,7 @@ export default function BillCard({ bill, cardIndex, selectedBill }: BillCardProp
     setTimeout(() => {
       setLoadingStep(false);
       window.alert(`You did it. You're debt free.`);
-    }, 3000);
+    }, 1000);
   };
 
   return (

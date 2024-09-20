@@ -1,0 +1,86 @@
+.payments {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+/*=======================================
+Tabs
+========================================*/
+.tab-group {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.tab-group button {
+  border: unset;
+  background: unset;
+  position: relative;
+  width: 100%;
+  color: var(--shade-1);
+  padding: 0.875rem;
+  border-radius: 0.3125rem 0.3125rem 0 0;
+  font-size: 1rem;
+  font-family: "Roboto";
+}
+
+.tab-group button:hover,
+.tab-group button:focus-visible {
+  color: var(--primary-button-hover);
+  background-color: var(--shade-7);
+}
+
+.tab-group button.active {
+  background-color: white;
+  color: var(--shade-1);
+  box-shadow: var(--shadow);
+  z-index: 1;
+  font-weight: 700;
+}
+
+.tab-group button.active::before {
+  content: "";
+  position: absolute;
+  width: 80%;
+  right: 10%;
+  left: 10%;
+  bottom: 0;
+  border-bottom: 0.25rem solid var(--chill-wave);
+}
+
+.tab-content {
+  background-color: white;
+  box-shadow: var(--shadow);
+  position: relative;
+  padding: 1rem;
+  z-index: 2;
+  border-radius: 0.3125rem;
+}
+
+/* .tab-content.active-2 {
+  border-radius: 0.3125rem 0 0.3125rem 0.3125rem;
+} */
+
+button.policy-detail-toggle {
+  justify-content: center;
+  width: 100%;
+  background-color: var(--background-green);
+  border-radius: 0.125rem;
+  color: var(--secondary-button-hover);
+}
+
+button.policy-detail-toggle svg path {
+  fill: var(--secondary-button-hover);
+}
+
+@media only screen and (min-width: 721px) {
+  /* .tab-group button {
+    max-width: 210px;
+  } */
+  .tab-content {
+    padding: 1.5rem;
+  }
+  button.policy-detail-toggle {
+    justify-content: flex-end;
+  }
+}

@@ -34,7 +34,7 @@ export default function Login({ logIn }: LoginProps) {
     setTimeout(() => {
       logIn();
       setLoadingStep(false);
-    }, 3000);
+    }, 1000);
   };
 
   return (

@@ -91,7 +91,7 @@ export default function RegistrationEmailVerfy({
           setContact({ ...contact, email: tempEmail });
           setTempEmail(tempEmail);
         }
-      }, 3000);
+      }, 1000);
     }
   };
 
@@ -103,7 +103,7 @@ export default function RegistrationEmailVerfy({
       setLoadingStep(false);
       setTempEmail(tempEmail);
       setCurrentStep(PASSWORD_SETUP);
-    }, 3000);
+    }, 1000);
   };
 
   useEffect(() => {

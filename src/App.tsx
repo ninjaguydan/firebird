@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router";
 import Footer from "layout/footer/Footer";
 import Header from "layout/header/Header";
 
+import Billing from "./pages/billing/Billing";
 import MFA from "./pages/mfa/MFA";
 import ForgotPassword from "pages/forgotPassword/ForgotPassword";
 import GuestPayment from "pages/guestPayment/GuestPayment";
@@ -13,8 +14,6 @@ import Registration from "pages/registration/Registration";
 
 import useSesionManagement from "utils/hooks/auth/useSessionManagement";
 import useScrollToTop from "utils/hooks/general/useScrollToTop";
-
-import viteLogo from "/vite.svg";
 
 const unauthenticatedPaths = [
   "/",
@@ -52,6 +51,7 @@ function App() {
           <Route path="verify" Component={MFA} />
           <Route path="/guest-payment" Component={GuestPayment} />
           <Route path="/home" Component={Home} />
+          <Route path="/billing" Component={Billing} />
         </Routes>
       </main>
       <Footer />

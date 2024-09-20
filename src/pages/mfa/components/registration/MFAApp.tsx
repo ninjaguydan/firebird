@@ -32,7 +32,7 @@ export default function MFAApp({ onRedirect }: MFAAppProps) {
     setTimeout(() => {
       setLoadingStep(false);
       setCurrentStep(COMPLETE);
-    }, 3000);
+    }, 1000);
   };
 
   return (

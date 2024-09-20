@@ -68,7 +68,7 @@ export default function RegistrationCard({
     setTimeout(() => {
       setLoadingStep(false);
       setCurrentStep(VERIFICATION);
-    }, 3000);
+    }, 1000);
   };
 
   return (
