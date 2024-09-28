@@ -66,12 +66,12 @@ h4.field-label {
   gap: 0.5rem;
 }
 .settings-info svg path {
-  fill: var(--primary-button-hover);
+  fill: var(--secondary-button-hover);
 }
 .settings-info small {
   width: 90%;
   font-size: 0.75rem;
-  color: var(--primary-button-hover);
+  color: var(--secondary-button-hover);
 }
 .mfa-logo {
   width: 3.125rem;

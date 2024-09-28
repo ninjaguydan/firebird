@@ -10,7 +10,7 @@ import MFAPasscodeAppForm from "src/components/forms/MFAPasscodeAppForm";
 import MFAPasscodeEmailForm from "src/components/forms/MFAPasscodeEmailForm";
 import MFAPasscodeSMSForm from "src/components/forms/MFAPasscodeSMSForm";
 import MFAPasscodeVoiceForm from "src/components/forms/MFAPasscodeVoiceForm";
-import Loader from "src/components/loaders/Loader";
+import Loader from "src/components/loaders/generalLoader/Loader";
 
 import { IDevice, IMfaMethods } from "src/utils/interfaces/auth/IMFA";
 

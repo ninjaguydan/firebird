@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import FullLogo from "src/components/common/fullLogo/FullLogo";
 import NestInput from "src/components/inputs/nestInput/NestInput";
 import NestSelect from "src/components/inputs/nestSelect/NestSelect";
-import Loader from "src/components/loaders/Loader";
+import Loader from "src/components/loaders/generalLoader/Loader";
 import PolicyListModal from "src/components/modals/policyListModal/PolicyListModal";
 
 import { forceNumber, forcePolicyFormat } from "src/utils/helpers/formatters";

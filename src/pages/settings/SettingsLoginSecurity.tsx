@@ -5,12 +5,19 @@ import SvgLock from "assets/icons/SvgLock";
 import SvgLogin from "assets/icons/SvgLogin";
 
 import CollapseBtn from "src/components/buttons/collapseBtn/CollapseBtn";
-import Loader from "src/components/loaders/Loader";
+import Loader from "src/components/loaders/generalLoader/Loader";
 
 import useFetchDevices from "src/utils/hooks/auth/useFetchDevices";
-import { IDevice } from "src/utils/interfaces/auth/IMFA";
+import { IDevice, demoDevices } from "src/utils/interfaces/auth/IMFA";
 
+import SettingsMFAEdit from "./MFA/MFAEdit";
+import MFAEditForm from "./MFA/MFAEditForm";
+import SettingsMFANew from "./MFA/MFANew";
+import ChangePassword from "./Password/ChangePassword";
+import ChooseAuthenticationMethodForm from "./Password/ChooseAuthMethod";
+import DeviceAuthenticationPasswordInputForm from "./Password/DeviceAuthenticationPasswordInputForm";
 import { SuccessType } from "./Settings";
+import "./SettingsLoginSecurity.css";
 
 type LoginInfoFormProps = {
   setShowSuccessModal: React.Dispatch<SetStateAction<boolean>>;
@@ -34,19 +41,17 @@ export default function SettingsLoginSecurity({
   setShowSuccessModal,
   setShowErrorModal,
   setErrorSubMsg,
-  setShowErrorType,
   loadingStep,
   setLoadingStep,
   successType,
   setSuccessType,
-  setShowMFAAppList,
 }: LoginInfoFormProps) {
   const [view, setView] = useState<LoginSecurityViews>("DEFAULT");
   const [isExpanded, setIsExpanded] = useState(true);
   const [invalidPasscode, setInvalidPasscode] = useState(false);
   const [limitExceeded, setLimitExceeded] = useState(false);
   const [resendOtpAction, setResendOtpAction] = useState(false);
-  const [selectedDevice, setSelectedDevice] = useState({});
+  const [selectedDevice, setSelectedDevice] = useState<IDevice>();
   const [deviceToEdit, setDeviceToEdit] = useState<IDevice | undefined>();
   const [deviceSelectEndPoint, setDeviceSelectEndPoint] = useState("");
   const [deviceAuthenticationEndpoint, setDeviceAuthenticationEndpoint] = useState("");
@@ -62,7 +67,7 @@ export default function SettingsLoginSecurity({
 
   const handleClose = () => {
     setResendOtpAction(false);
-    setSelectedDevice({});
+    setSelectedDevice(undefined);
     setDeviceSelectEndPoint("");
     setLimitExceeded(false);
     setView("DEFAULT");
@@ -70,79 +75,11 @@ export default function SettingsLoginSecurity({
 
   const handleChangePasswordFlow = () => {
     setLoadingStep(true);
-    const accessToken = sessionStorage.getItem("accessToken");
-    const userData = JSON.parse(sessionStorage.getItem("userInfo")!);
-    const deviceAuthenticationEndpoint = `${auth_endpoint}/deviceAuthentications`;
-    if (accessToken && accessToken !== undefined && userData && userData !== undefined) {
-      axios
-        .post(
-          deviceAuthenticationEndpoint,
-          {
-            user: {
-              id: userData["p1.userId"],
-            },
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-              "Content-Type": "application/json",
-            },
-          },
-        )
-        .then((response) => {
-          setLoadingStep(false);
-          const status = response.data.status;
-          if (status === "DEVICE_SELECTION_REQUIRED") {
-            setView("CHOOSE_METHOD");
-            const devicesArrays = response.data["_embedded"]["devices"];
-            const deviceSelectEndPoint = response.data["_links"]["device.select"]["href"];
-            setDevices(devicesArrays);
-            setDeviceSelectEndPoint(deviceSelectEndPoint);
-          } else if (status === "OTP_REQUIRED") {
-            const devicesArrays = response.data["_embedded"]["devices"];
-            const deviceSelectEndPoint = response.data["_links"]["device.select"]["href"];
-            setSelectedDevice(devicesArrays[0]);
-            setDeviceSelectEndPoint(deviceSelectEndPoint);
-            setView("INPUT_PASSCODE");
-          }
-        })
-        .catch((err) => {
-          setLoadingStep(false);
-          if (err?.response) {
-            if (err?.response?.status === 400) {
-              if (err?.response?.data.details[0]?.code === "NO_USABLE_DEVICES") {
-                setShowErrorModal(true);
-                setShowErrorType("seriousErrorStatus");
-                setErrorSubMsg(
-                  `Couldn't find authenticating device for user : ${userData["username"]}`,
-                );
-              } else {
-                setShowErrorModal(true);
-                setErrorSubMsg(
-                  err?.response?.data.details[0]?.target +
-                    " : " +
-                    err?.response?.data.details[0]?.message,
-                );
-              }
-            } else if (err?.response?.status === 500) {
-              if (err?.response?.data.details[0]?.code === "UNEXPECTED_ERROR") {
-                setShowErrorModal(true);
-                setShowErrorType("seriousErrorStatus");
-                setErrorSubMsg("Timeout error : Please initiate the process again!");
-              } else {
-                setShowErrorModal(true);
-                setErrorSubMsg(err?.response?.data?.message);
-              }
-            } else {
-              setShowErrorModal(true);
-              setErrorSubMsg("Some error");
-            }
-          } else {
-            setShowErrorModal(true);
-            setErrorSubMsg("Some error");
-          }
-        });
-    }
+    setTimeout(() => {
+      setLoadingStep(false);
+      setView("CHOOSE_METHOD");
+      setDevices(demoDevices);
+    }, 1000);
   };
 
   const handleSubmitDeviceAuthentication = (
@@ -152,132 +89,25 @@ export default function SettingsLoginSecurity({
   ) => {
     setLoadingStep(true);
     setLimitExceeded(false);
-    const accessToken = sessionStorage.getItem("accessToken");
-    const userData = JSON.parse(sessionStorage.getItem("userInfo")!);
-    const deviceSelectAuthenticationEndpoint = deviceSelectionEndPoint;
-    if (accessToken && accessToken !== undefined && userData && userData !== undefined) {
-      axios
-        .post(
-          deviceSelectAuthenticationEndpoint,
-          {
-            device: {
-              id: deviceForAuthentications.id,
-            },
-            compatibility: "FULL",
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-              "Content-Type": "application/vnd.pingidentity.device.select+json",
-            },
-          },
-        )
-        .then((response) => {
-          setLoadingStep(false);
-          const status = response.data.status;
-          if (status === "OTP_REQUIRED") {
-            if (action === "resend") {
-              setResendOtpAction(true);
-            }
-            setSelectedDevice(deviceForAuthentications);
-            setDeviceSelectEndPoint(deviceSelectionEndPoint);
-            setView("INPUT_PASSCODE");
-          }
-        })
-        .catch((err) => {
-          setLoadingStep(false);
-          if (err?.response) {
-            if (err?.response?.status === 400) {
-              if (err?.response?.data.details[0]?.code) {
-                setShowErrorModal(true);
-                setErrorSubMsg(
-                  err?.response?.data.details[0]?.target +
-                    " : " +
-                    err?.response?.data.details[0]?.message,
-                );
-              }
-            } else if (err?.response?.status === 500) {
-              if (err?.response?.data?.code === "UNEXPECTED_ERROR") {
-                setShowErrorModal(true);
-                setShowErrorType("seriousErrorStatus");
-                setErrorSubMsg("Timeout error : Please initiate the process again!");
-              } else {
-                setShowErrorModal(true);
-                setErrorSubMsg(err?.response?.data?.message);
-              }
-            } else {
-              setShowErrorModal(true);
-              setErrorSubMsg("Some error");
-            }
-          } else {
-            setShowErrorModal(true);
-            setErrorSubMsg("Some error");
-          }
-        });
-    }
+
+    setTimeout(() => {
+      setLoadingStep(false);
+      if (action === "resend") {
+        setResendOtpAction(true);
+      }
+      setSelectedDevice(deviceForAuthentications);
+      setDeviceSelectEndPoint(deviceSelectionEndPoint);
+      setView("INPUT_PASSCODE");
+    }, 1000);
   };
 
   const handleSubmitPasscode = (deviceSelectionEndPoint: string, passcode: string) => {
     setLoadingStep(true);
-    const accessToken = sessionStorage.getItem("accessToken");
-    const userData = JSON.parse(sessionStorage.getItem("userInfo")!);
-    const deviceSelectAuthenticationEndpoint = deviceSelectionEndPoint;
-    if (accessToken && accessToken !== undefined && userData && userData !== undefined) {
-      axios
-        .post(
-          deviceSelectAuthenticationEndpoint,
-          {
-            otp: passcode,
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-              "Content-Type": "application/vnd.pingidentity.otp.check+json",
-            },
-          },
-        )
-        .then((response) => {
-          setLoadingStep(false);
-          setView("CHANGE_PASSWORD");
-        })
-        .catch((err) => {
-          setLoadingStep(false);
-          if (err?.response) {
-            if (err?.response?.status === 400) {
-              if (err?.response?.data?.details[0]?.code === "INVALID_OTP") {
-                setLimitExceeded(false);
-                setInvalidPasscode(true);
-              } else if (err?.response?.data?.details[0]?.code === "QUOTA_EXCEEDED") {
-                setLimitExceeded(true);
-                setInvalidPasscode(false);
-                if (err?.response?.data?.details[0]?.innerError?.coolDownExpiresAt > 0) {
-                  setTimeRemainingToRetry(
-                    err?.response?.data?.details[0]?.innerError?.coolDownExpiresAt,
-                  );
-                }
-              } else {
-                setShowErrorModal(true);
-                setErrorSubMsg(err?.response?.data?.details[0]?.message);
-              }
-            } else if (err?.response?.status === 500) {
-              if (err?.response?.data?.code === "UNEXPECTED_ERROR") {
-                setShowErrorModal(true);
-                setShowErrorType("seriousErrorStatus");
-                setErrorSubMsg("Timeout error : Please initiate the process again!");
-              } else {
-                setShowErrorModal(true);
-                setErrorSubMsg(err?.response?.data?.message);
-              }
-            } else {
-              setShowErrorModal(true);
-              setErrorSubMsg("Some error");
-            }
-          } else {
-            setShowErrorModal(true);
-            setErrorSubMsg("Some error");
-          }
-        });
-    }
+
+    setTimeout(() => {
+      setLoadingStep(false);
+      setView("CHANGE_PASSWORD");
+    }, 1000);
   };
 
   const handleChooseAnotherDevice = () => {
@@ -322,7 +152,7 @@ export default function SettingsLoginSecurity({
                     </div>
                   </div>
                 </div>
-                <button className="btn-nest primary" onClick={handleChangePasswordFlow}>
+                <button className="btn-nest primary" onClick={() => {}}>
                   <SvgLock />
                   Change Password
                 </button>
@@ -331,7 +161,6 @@ export default function SettingsLoginSecurity({
                 setShowSuccessModal={setShowSuccessModal}
                 setShowErrorModal={setShowErrorModal}
                 setErrorSubMsg={setErrorSubMsg}
-                setShowErrorType={setShowErrorType}
                 loadingStep={loadingStep}
                 setLoadingStep={setLoadingStep}
                 devicesForAuthentications={devices}
@@ -341,7 +170,6 @@ export default function SettingsLoginSecurity({
                 isLoading={isLoading}
                 successType={successType}
                 setSuccessType={setSuccessType}
-                setShowMFAAppList={setShowMFAAppList}
               />
             </>
           )}
@@ -354,9 +182,7 @@ export default function SettingsLoginSecurity({
               setShowSuccessModal={setShowSuccessModal}
               setShowErrorModal={setShowErrorModal}
               setShowErrorSubMsg={setErrorSubMsg}
-              setErrorType={setShowErrorType}
               setSuccessType={setSuccessType}
-              setShowMFAAppList={setShowMFAAppList}
             />
           )}
           {view === "EDIT_DEVICE" && (
@@ -368,10 +194,8 @@ export default function SettingsLoginSecurity({
               setShowSuccessModal={setShowSuccessModal}
               setShowErrorModal={setShowErrorModal}
               setShowErrorSubMsg={setErrorSubMsg}
-              setErrorType={setShowErrorType}
               setView={setView}
               setSuccessType={setSuccessType}
-              setShowMFAAppList={setShowMFAAppList}
             />
           )}
           {view === "CHOOSE_METHOD" && devices.length > 0 && deviceSelectEndPoint !== "" && (
@@ -382,29 +206,23 @@ export default function SettingsLoginSecurity({
               handleSubmitDeviceAuthentication={handleSubmitDeviceAuthentication}
             />
           )}
-          {view === "INPUT_PASSCODE" &&
-            deviceSelectEndPoint !== "" &&
-            Object.keys(selectedDevice).length > 0 && (
-              <DeviceAuthenticationPasswordInputForm
-                devicesForAuthentications={devices}
-                handleClose={handleClose}
-                handleSubmitPasscode={handleSubmitPasscode}
-                invalidPasscode={invalidPasscode}
-                limitExceeded={limitExceeded}
-                setLimitExceeded={setLimitExceeded}
-                timeRemainingToRetry={timeRemainingToRetry}
-                setTimeRemainingToRetry={setTimeRemainingToRetry}
-                deviceSelectEndPoint={deviceSelectEndPoint}
-                deviceSelectedForAuthentication={selectedDevice}
-                handleSubmitDeviceAuthentication={handleSubmitDeviceAuthentication}
-                setInvalidPasscode={setInvalidPasscode}
-                resendOtpAction={resendOtpAction}
-                setResendOtpAction={setResendOtpAction}
-                handleChooseAnotherDevice={handleChooseAnotherDevice}
-              />
-            )}
+          {view === "INPUT_PASSCODE" && deviceSelectEndPoint !== "" && selectedDevice && (
+            <DeviceAuthenticationPasswordInputForm
+              devicesForAuthentications={devices}
+              deviceSelectedForAuthentication={selectedDevice}
+              deviceSelectEndPoint={deviceSelectEndPoint}
+              handleClose={handleClose}
+              handleSubmitPasscode={handleSubmitPasscode}
+              invalidPasscode={invalidPasscode}
+              handleSubmitDeviceAuthentication={handleSubmitDeviceAuthentication}
+              setInvalidPasscode={setInvalidPasscode}
+              resendOtpAction={resendOtpAction}
+              setResendOtpAction={setResendOtpAction}
+              handleChooseAnotherDevice={handleChooseAnotherDevice}
+            />
+          )}
           {view === "CHANGE_PASSWORD" && (
-            <ChangePasswordForm
+            <ChangePassword
               setView={setView}
               setShowSuccessModal={setShowSuccessModal}
               setShowErrorModal={setShowErrorModal}

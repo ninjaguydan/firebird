@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import SvgSettings from "assets/icons/SvgSettings";
 import SvgSignOut from "assets/icons/SvgSignOut";
 
-import Loader from "src/components/loaders/Loader";
+import Loader from "src/components/loaders/generalLoader/Loader";
 import ConfirmModal from "src/components/modals/confirmModal/ConfirmModal";
 import { signOutContent } from "src/components/modals/confirmModal/modalContent";
 import ErrorModal from "src/components/modals/errorModal/ErrorModal";
@@ -13,6 +13,8 @@ import EmailVerificationSuccessPopup from "src/components/popups/EmailVerificati
 import PasswordChangeSuccessPopup from "src/components/popups/PasswordChangeSuccessPopup/PasswordChangeSuccessPopup";
 import UpdateMFADeviceSuccessPopup from "src/components/popups/UpdateMFADeviceSuccessPopup/UpdateMFADeviceSuccessPopup";
 import UpdateNicknameSuccessPopup from "src/components/popups/UpdateNicknameSuccessPopup/UpdateNicknameSuccessPopup";
+
+import { EMPTY_USER } from "src/utils/interfaces/registration/IUser";
 
 import SettingsBillingForm from "./SettingsBillingForm";
 import SettingCommunicationForm from "./SettingsCommunicationForm";
@@ -47,7 +49,14 @@ type SettingProps = {
 };
 
 const Settings = ({ logOut }: SettingProps) => {
-  const [userPersonalInfo, setUserPersonalInfo] = useState<PersonalInfo>({});
+  const [userPersonalInfo, setUserPersonalInfo] = useState<PersonalInfo>({
+    userId: "bcmitm",
+    name: { given: EMPTY_USER.fname, family: EMPTY_USER.lname },
+    email: EMPTY_USER.email,
+    emailVerified: true,
+    preferredName: "Walt",
+    primaryPhone: EMPTY_USER.phone,
+  });
   const [fullAddressArray, setFullAddressArray] = useState<[] | RegExpMatchArray>([]);
   const [showShowErrorModal, setShowErrorModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);

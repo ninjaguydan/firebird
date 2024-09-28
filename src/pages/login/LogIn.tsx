@@ -5,7 +5,7 @@ import learningLogin from "assets/images/learning-login.png";
 import sunbathingLogin from "assets/images/sunbathing-login.png";
 
 import LoginForm from "pages/login/components/LoginForm";
-import Loader from "src/components/loaders/Loader";
+import Loader from "src/components/loaders/generalLoader/Loader";
 
 import Hero from "layout/hero/Hero";
 

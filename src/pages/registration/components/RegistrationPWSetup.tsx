@@ -2,7 +2,7 @@ import React, { SetStateAction, useContext, useEffect, useRef, useState } from "
 
 import PasswordRequirements from "src/components/common/passwordRequirements/PasswordRequirements";
 import NestInput from "src/components/inputs/nestInput/NestInput";
-import Loader from "src/components/loaders/Loader";
+import Loader from "src/components/loaders/generalLoader/Loader";
 import "src/pages/registration/components/registration-pw-setup.css";
 
 import useValidator from "src/utils/hooks/registration/useValidator";

@@ -3,7 +3,7 @@ import React, { SetStateAction, useContext, useEffect, useState } from "react";
 import SvgApp from "assets/icons/SvgApp";
 
 import MFAPasscodeAppForm from "src/components/forms/MFAPasscodeAppForm";
-import Loader from "src/components/loaders/Loader";
+import Loader from "src/components/loaders/generalLoader/Loader";
 
 import { StepContext } from "src/pages/registration/Registration";
 

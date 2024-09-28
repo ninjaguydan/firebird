@@ -4,7 +4,7 @@ import SvgPhone from "src/assets/icons/SvgPhone";
 
 import MFAPEnterPhoneForm from "src/components/forms/MFAEnterPhoneForm";
 import MFAPasscodeVoiceForm from "src/components/forms/MFAPasscodeVoiceForm";
-import Loader from "src/components/loaders/Loader";
+import Loader from "src/components/loaders/generalLoader/Loader";
 
 import { StepContext } from "src/pages/registration/Registration";
 

@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useContext, useState } from "react";
 
-import Loader from "src/components/loaders/Loader";
+import Loader from "src/components/loaders/generalLoader/Loader";
 import ErrorModal from "src/components/modals/errorModal/ErrorModal";
 
 import { sanitize } from "src/utils/helpers/formatters";

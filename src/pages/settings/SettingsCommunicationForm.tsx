@@ -8,13 +8,15 @@ import SvgSuccess from "assets/icons/SvgSuccess";
 import SvgWarning from "assets/icons/SvgWarning";
 
 import CollapseBtn from "src/components/buttons/collapseBtn/CollapseBtn";
+import ResentCode from "src/components/common/resentCode/ResentCode";
 import NestInput from "src/components/inputs/nestInput/NestInput";
 import NestSwitch from "src/components/inputs/nestSwitch/NestSwitch";
-import Loader from "src/components/loaders/Loader";
+import Loader from "src/components/loaders/generalLoader/Loader";
 import ConfirmModal from "src/components/modals/confirmModal/ConfirmModal";
 import { exitEditingStateConfirm } from "src/components/modals/confirmModal/modalContent";
 import ErrorModal from "src/components/modals/errorModal/ErrorModal";
 
+import { EMPTY_USER } from "src/utils/interfaces/registration/IUser";
 import { validateEmail, validatePreferredName } from "src/utils/validators/validators";
 
 import { PersonalInfo, SuccessType } from "./Settings";
@@ -52,7 +54,6 @@ const SettingCommunicationForm = ({
 
   const [showNestInput, setShowNestInput] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
-  const [errorType, setErrorType] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const [error, setError] = useState("");
   const [showExitEditingConfirmPopup, setShowExitEditingConfirmPopup] = useState(false);
@@ -61,26 +62,6 @@ const SettingCommunicationForm = ({
     code: "",
     nickname: "",
   });
-
-  useEffect(() => {
-    if (
-      userPersonalInfo?.nickname !== "" &&
-      userPersonalInfo?.nickname !== undefined &&
-      userPersonalInfo?.nickname !== null
-    ) {
-      setTempName(userPersonalInfo?.nickname);
-    } else {
-      setTempName(userPersonalInfo?.name?.given!);
-    }
-    if (
-      userPersonalInfo?.email &&
-      userPersonalInfo?.emailVerified !== undefined &&
-      userPersonalInfo?.emailVerified !== null
-    ) {
-      setTempEmail(userPersonalInfo?.email);
-      setIsEmailVerified(userPersonalInfo.emailVerified);
-    }
-  }, [userPersonalInfo]);
 
   const toggleEditEmail = () => {
     setErrorObject((errorObject) => ({
@@ -104,42 +85,10 @@ const SettingCommunicationForm = ({
 
   const handleResend = () => {
     setCode("");
-    setLoadingStep(true);
-    const responseBody = {
-      email: tempEmail,
-      notificationType: "admin",
-    };
-    const accessToken = sessionStorage.getItem("accessToken");
-
-    if (accessToken) {
-      axios
-        .post(`${api_endpoint}/users/${userPersonalInfo?.userId}/emailVerification`, responseBody, {
-          headers: {
-            "Content-Type": "application/vnd.pingidentity.user.emailVerification.send+json",
-            Authorization: `Bearer ${accessToken}`,
-          },
-        })
-        .then((res) => {
-          if (res.status === 200) {
-            setErrorObject((errorObject) => ({
-              ...errorObject,
-              code: "",
-            }));
-            setLoadingStep(false);
-            setResentPasscode(true);
-            setTimeout(() => setResentPasscode(false), 30000);
-          } else {
-            throw new Error("Failed to resend verification email");
-          }
-        })
-        .catch((err) => {
-          setLoadingStep(false);
-          setShowErrorModal(true);
-        });
-    } else {
-      setLoadingStep(false);
-      setShowErrorModal(true);
-    }
+    setResentPasscode(true);
+    setTimeout(() => {
+      setResentPasscode(false);
+    }, 5000);
   };
 
   const onChangeEmail = () => {
@@ -177,106 +126,24 @@ const SettingCommunicationForm = ({
       }));
       if (errorObject.email === "" && validateEmail(tempEmail) === "") {
         setLoadingStep(true);
-        var responseBody = {
-          email: tempEmail.trim(),
-          notificationType: "admin",
-        };
-        if (
-          sessionStorage.getItem("accessToken") !== null &&
-          sessionStorage.getItem("accessToken") !== undefined
-        ) {
-          axios
-            .patch(`${api_endpoint}/users/${userPersonalInfo?.userId}`, responseBody, {
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
-              },
-            })
-            .then((res) => {
-              setIsEmailVerified(res.data.emailVerified);
-              handleVerifyEmail();
-            })
-            .catch((err) => {
-              if (err?.response) {
-                if (err?.response?.status === 400) {
-                  setLoadingStep(false);
-                  if (err?.response?.data.details[0]?.target === "email") {
-                    if (err?.response?.data.details[0]?.code === "UNIQUENESS_VIOLATION") {
-                      setErrorObject((errorObject) => ({
-                        ...errorObject,
-                        email:
-                          "The email you have provided is already in use, please choose another one!",
-                      }));
-                    } else {
-                      setErrorObject((errorObject) => ({
-                        ...errorObject,
-                        email:
-                          err?.response?.data.details[0]?.target +
-                          " " +
-                          err?.response?.data.details[0]?.message,
-                      }));
-                    }
-                  } else {
-                    setErrorObject((errorObject) => ({
-                      ...errorObject,
-                      email:
-                        err?.response?.data?.details[0]?.target +
-                        " " +
-                        err?.response?.data?.details[0]?.message,
-                    }));
-                  }
-                } else if (
-                  err?.response?.status === 404 &&
-                  err?.response?.statusText === "Not Found"
-                ) {
-                  setLoadingStep(false);
-                  setErrorType("seriousErrorStatus");
-                  setShowErrorModal(true);
-                  setError("404 NOT FOUND");
-                } else {
-                  setLoadingStep(false);
-                  setErrorMsg("We were unable to store the updated email!");
-                  setShowErrorModal(true);
-                }
-              } else {
-                setLoadingStep(false);
-                setErrorMsg("We were unable to store the updated email!");
-                setShowErrorModal(true);
-              }
-            });
-        }
+        setTimeout(() => {
+          setIsEmailVerified(true);
+          handleVerifyEmail();
+        }, 1000);
       }
     }
   };
 
   const handleVerifyEmail = () => {
-    var responseBody = {
-      email: tempEmail.trim(),
-      notificationType: "admin",
-    };
-    axios
-      .post(`${api_endpoint}/users/${userPersonalInfo?.userId}/emailVerification`, responseBody, {
-        headers: {
-          "Content-Type": "application/vnd.pingidentity.user.emailVerification.send+json",
-          Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
-        },
-      })
-      .then((res) => {
-        setLoadingStep(false);
-        setIsEmailSaved(true);
-        setTempEmail(tempEmail);
-        setEditEmail(false);
-        setShowNestInput(true);
-        setUserPersonalInfo({
-          ...userPersonalInfo,
-          email: tempEmail,
-        });
-      })
-      .catch((err) => {
-        setLoadingStep(false);
-        setErrorMsg("We were unable to initiate the email verification step!");
-        setShowErrorModal(true);
-      });
+    setLoadingStep(false);
+    setIsEmailSaved(true);
+    setTempEmail(tempEmail);
+    setEditEmail(false);
+    setShowNestInput(true);
+    setUserPersonalInfo({
+      ...userPersonalInfo,
+      email: tempEmail,
+    });
   };
 
   const handleNameEditClose = (action: "EXIT" | "SAVE") => {
@@ -298,79 +165,21 @@ const SettingCommunicationForm = ({
     }
     if (action === "SAVE") {
       setLoadingStep(true);
-      var responseBody = {
-        nickname: tempName.trim(),
-      };
-      if (
-        sessionStorage.getItem("accessToken") !== null &&
-        sessionStorage.getItem("accessToken") !== undefined
-      ) {
-        axios
-          .patch(`${api_endpoint}/users/${userPersonalInfo?.userId}`, responseBody, {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
-            },
-          })
-          .then((res) => {
-            setLoadingStep(false);
-            setTempName(tempName);
-            setUserPersonalInfo({
-              ...userPersonalInfo,
-              nickname: tempName!,
-            });
-            setErrorObject((errorObject) => ({
-              ...errorObject,
-              nickname: "",
-            }));
-            setSuccessType("EDIT_NICKNAME");
-            setShowSuccessModal(true);
-            setEditName(false);
-            sessionStorage.setItem("nickName", tempName);
-          })
-          .catch((err) => {
-            if (err?.response) {
-              if (err?.response?.status === 400) {
-                setLoadingStep(false);
-                if (err?.response?.data) {
-                  if (err?.response?.data.details[0]?.target === "nickname") {
-                    setErrorObject((errorObject) => ({
-                      ...errorObject,
-                      nickname:
-                        err?.response?.data?.details[0]?.target +
-                        " " +
-                        err?.response?.data?.details[0]?.message,
-                    }));
-                  } else {
-                    setErrorObject((errorObject) => ({
-                      ...errorObject,
-                      nickname:
-                        err?.response?.data?.details[0]?.target +
-                        " " +
-                        err?.response?.data?.details[0]?.message,
-                    }));
-                  }
-                }
-              } else if (
-                err?.response?.status === 404 &&
-                err?.response?.statusText === "Not Found"
-              ) {
-                setLoadingStep(false);
-                setErrorType("seriousErrorStatus");
-                setShowErrorModal(true);
-                setError("404 NOT FOUND");
-              } else {
-                setLoadingStep(false);
-                setErrorMsg("We were unable to update the preferred name!");
-                setShowErrorModal(true);
-              }
-            } else {
-              setLoadingStep(false);
-              setErrorMsg("We were unable to update the preferred name!");
-              setShowErrorModal(true);
-            }
-          });
-      }
+      setTimeout(() => {
+        setLoadingStep(false);
+        setTempName(tempName);
+        setUserPersonalInfo({
+          ...userPersonalInfo,
+          nickname: tempName!,
+        });
+        setErrorObject((errorObject) => ({
+          ...errorObject,
+          nickname: "",
+        }));
+        setSuccessType("EDIT_NICKNAME");
+        setShowSuccessModal(true);
+        setEditName(false);
+      }, 1000);
     }
   };
 
@@ -378,83 +187,25 @@ const SettingCommunicationForm = ({
     setShowErrorModal(false);
     setErrorMsg("");
     if (error === "404 NOT FOUND") {
-      setErrorType("error");
       setError("");
       setErrorObject((errorObject) => ({
         ...errorObject,
         code: "",
       }));
     }
-    setErrorType("");
   };
 
   const handleVerify = (e: React.FormEvent) => {
     e.preventDefault();
-    var responseBody = {
-      verificationCode: code,
-    };
     setLoadingStep(true);
-    if (
-      sessionStorage.getItem("accessToken") !== null &&
-      sessionStorage.getItem("accessToken") !== undefined
-    ) {
-      axios
-        .post(`${api_endpoint}/users/${userPersonalInfo?.userId}/emailVerification`, responseBody, {
-          headers: {
-            "Content-Type": "application/vnd.pingidentity.user.emailVerification.verify+json",
-            Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
-          },
-        })
-        .then((res) => {
-          if (res.data.emailVerified) {
-            setShowSuccessModal(true);
-            setSuccessType("VERIFY_EMAIL");
-            setIsEmailVerified(true);
-            setShowNestInput(false);
-            setIsEmailSaved(false);
-            setCode("");
-          }
-          setLoadingStep(false);
-        })
-        .catch((err) => {
-          if (err?.response) {
-            if (err?.response?.status === 400) {
-              if (
-                err?.response?.data.details[0]?.code &&
-                err?.response?.data?.details[0]?.target === "verificationCode"
-              ) {
-                setLoadingStep(false);
-                if (err?.response?.data.details[0]?.code === "INVALID_VALUE") {
-                  setErrorObject((errorObject) => ({
-                    ...errorObject,
-                    code: "Invalid verification code.",
-                  }));
-                } else {
-                  setErrorObject((errorObject) => ({
-                    ...errorObject,
-                    code:
-                      err?.response?.data.details[0]?.target +
-                      " : " +
-                      err?.response?.data.details[0]?.message,
-                  }));
-                }
-              } else {
-                setLoadingStep(false);
-                setErrorMsg("We were unable to verify the code!");
-                setShowErrorModal(true);
-              }
-            } else {
-              setLoadingStep(false);
-              setErrorMsg("We were unable to verify the code!");
-              setShowErrorModal(true);
-            }
-          } else {
-            setLoadingStep(false);
-            setErrorMsg("We were unable to verify the code!");
-            setShowErrorModal(true);
-          }
-        });
-    }
+    setTimeout(() => {
+      setShowSuccessModal(true);
+      setSuccessType("VERIFY_EMAIL");
+      setIsEmailVerified(true);
+      setShowNestInput(false);
+      setIsEmailSaved(false);
+      setCode("");
+    }, 1000);
   };
 
   const handleCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -545,10 +296,7 @@ const SettingCommunicationForm = ({
                   </button>
                   <div className="vr"></div>
                   {resentPasscode ? (
-                    <div className="resend-otp-action">
-                      <SvgSuccess />
-                      <p>Another code has been sent</p>
-                    </div>
+                    <ResentCode />
                   ) : (
                     <button
                       type="button"
@@ -682,7 +430,9 @@ const SettingCommunicationForm = ({
             <div className="field-data edit">
               <div>
                 <h4 className="field-label">Preferred Name</h4>
-                <p className={isLoading ? "loader-block field-input" : "field-input"}>{tempName}</p>
+                <p className={isLoading ? "loader-block field-input" : "field-input"}>
+                  {userPersonalInfo.preferredName}
+                </p>
               </div>
               <button className="btn-nest secondary" onClick={toggleEditName} disabled={isLoading}>
                 <SvgEdit /> Edit Name

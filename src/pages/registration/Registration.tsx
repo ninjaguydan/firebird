@@ -8,7 +8,7 @@ import RegistrationHeader from "./components/RegistrationHeader";
 import RegistrationPWSetup from "./components/RegistrationPWSetup";
 import RegistrationEmailVerfy from "./components/RegistrationVerify";
 import ProgressBar from "src/components/common/progressBar/ProgressBar";
-import Loader from "src/components/loaders/Loader";
+import Loader from "src/components/loaders/generalLoader/Loader";
 import ErrorModal from "src/components/modals/errorModal/ErrorModal";
 import GeneralModal, { GeneralModalContent } from "src/components/modals/generalModal/GeneralModal";
 

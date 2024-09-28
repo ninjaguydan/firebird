@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router";
 
 import PING from "assets/images/image 1.png";
 
-import Loader from "src/components/loaders/Loader";
+import Loader from "src/components/loaders/generalLoader/Loader";
 import GeneralModal, { GeneralModalContent } from "src/components/modals/generalModal/GeneralModal";
 import MFAList from "src/pages/mfa/components/MFAList";
 import LoginMFA from "src/pages/mfa/components/auth/LoginMFA";

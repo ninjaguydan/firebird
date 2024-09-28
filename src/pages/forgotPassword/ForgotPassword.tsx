@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import Loader from "src/components/loaders/Loader";
+import Loader from "src/components/loaders/generalLoader/Loader";
 import ChangePasswordForm from "src/pages/forgotPassword/components/ChangePasswordForm";
 import EnterUsernameForm from "src/pages/forgotPassword/components/EnterUsernameForm";
 import ForgotPasswordComplete from "src/pages/forgotPassword/components/ForgotPasswordComplete";

@@ -6,7 +6,7 @@ import SvgSuccess from "assets/icons/SvgSuccess";
 
 import ResentCode from "src/components/common/resentCode/ResentCode";
 import NestInput from "src/components/inputs/nestInput/NestInput";
-import Loader from "src/components/loaders/Loader";
+import Loader from "src/components/loaders/generalLoader/Loader";
 import ErrorModal from "src/components/modals/errorModal/ErrorModal";
 
 import { ContactInfo } from "src/utils/interfaces/registration/IContactInfo";

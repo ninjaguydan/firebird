@@ -205,8 +205,17 @@ Button Styles
 }
 
 .secondary:disabled {
-  border: 1px solid var(--shade-3);
-  color: var(--shade-3);
+  border: 1px solid var(--shade-4);
+  color: var(--shade-5);
+}
+
+.secondary:disabled:hover {
+  background-color: unset;
+}
+
+.secondary:disabled path,
+.secondary:disabled:hover path {
+  fill: var(--shade-5);
 }
 
 .tertiary {
@@ -343,7 +352,7 @@ Card Styles
 
 .nest-card.alt {
   box-shadow: unset;
-  border: 1px solid var(--chill-wave);
+  border: 1px solid var(--summer-break);
   border-radius: 0.25rem;
 }
 
@@ -353,9 +362,9 @@ Card Styles
   align-items: center;
   gap: 0.5rem;
   font-size: 1.25rem;
-  color: var(--chill-wave-dark);
+  color: var(--summer-break-dark);
   font-weight: 400;
-  border-bottom: 3px solid var(--chill-wave);
+  border-bottom: 3px solid var(--summer-break);
 }
 
 .card-header svg {
@@ -364,7 +373,7 @@ Card Styles
 }
 
 .card-header svg path {
-  fill: var(--chill-wave);
+  fill: var(--summer-break);
 }
 
 .card-header.alt {

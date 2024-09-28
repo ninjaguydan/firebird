@@ -1,7 +1,7 @@
 import React, { SetStateAction, createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-import Loader from "src/components/loaders/Loader";
+import Loader from "src/components/loaders/generalLoader/Loader";
 
 import { ContactContext } from "src/pages/registration/Registration";
 

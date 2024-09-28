@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import CollapseBtn from "src/components/buttons/collapseBtn/CollapseBtn";
-import Loader from "src/components/loaders/Loader";
+import Loader from "src/components/loaders/generalLoader/Loader";
 
 import { IPolicyBillingDetail } from "src/utils/interfaces/data/policyBillingDetails";
 
