@@ -55,6 +55,22 @@ export function validateLName(value: string) {
   }
 }
 
+export function validatePreferredName(value: string) {
+  let trimmedValue = value.trim();
+  if (trimmedValue.length < 2 || trimmedValue.length > 30) {
+    return "Preferred name must be between 2 to 30 characters long.";
+  }
+  const validCharsRegex = /^[a-zA-Z0-9 _.-]+$/;
+  if (!validCharsRegex.test(trimmedValue)) {
+    return "Preferred name contains invalid characters. Only letters, numbers, spaces, underscores (_), hyphens (-), and periods (.) are allowed.";
+  }
+  const containsLettersRegex = /[a-zA-Z]/;
+  if (!containsLettersRegex.test(trimmedValue)) {
+    return "Preferred name must contain at least one letter.";
+  }
+  return "";
+}
+
 export function validateEmail(value: string) {
   const re =
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

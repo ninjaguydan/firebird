@@ -64,27 +64,15 @@ export default function BillCardPaymentSelectionPC({
   };
 
   const handleOtherAmount = (e: React.ChangeEvent<HTMLInputElement>, onBlur: boolean = false) => {
-    if (paymentAmounts?.balance) {
-      if (onBlur && !tempOtherAmount) {
-        setTempOtherAmount("");
-        return;
-      }
-      let value = e.target.value;
-      const cleanedValue = value.replace(/[^\d.]/g, "");
-      const numericValue = parseFloat(cleanedValue);
-      if (numericValue > 0) setShowPaymentNote(false);
-      if (!isNaN(numericValue) && numericValue > 99999.99) {
-        value = "99999.99";
-      }
-
-      if (onBlur && tempOtherAmount) {
-        value = numericValue.toFixed(2);
-      }
-      let formattedValue = formatCurrency(value, onBlur);
-      setTempOtherAmount(onBlur ? `$${formattedValue}` : value);
-      let formattedNumber = parseFloat(value.replace(",", ""));
-      setPaymentAmount({ ...paymentAmount, [`other-${cardIndex}`]: formattedNumber });
+    if (onBlur && !tempOtherAmount) {
+      setTempOtherAmount("");
+      return;
     }
+    let formattedValue = formatCurrency(e.target.value, onBlur);
+    setTempOtherAmount(onBlur ? `$${formattedValue}` : formattedValue);
+
+    let formattedNumber = parseFloat(formattedValue.replace(",", ""));
+    setPaymentAmount({ ...paymentAmount, [`other-${cardIndex}`]: formattedNumber });
   };
 
   useEffect(() => {

@@ -3,7 +3,6 @@ import { Link, NavLink } from "react-router-dom";
 
 import SvgBill from "assets/icons/SvgBill";
 import SvgHome from "assets/icons/SvgHome";
-import SvgPolicy from "assets/icons/SvgPolicy";
 import SvgSettings from "assets/icons/SvgSettings";
 import SvgSignOut from "assets/icons/SvgSignOut";
 
@@ -14,9 +13,9 @@ import { signOutContent } from "src/components/modals/confirmModal/modalContent"
 
 import "src/layout/header/header.css";
 
+import useCheckActive from "src/utils/hooks/header/useCheckActive";
 import useNoBGScroll from "utils/hooks/general/useNoBGScroll";
 import { useScreenWidth } from "utils/hooks/general/useScreenWidth";
-import useCheckActive from "utils/hooks/header/useCheckActive";
 
 type HeaderProps = {
   logOut: (action: string) => void;
@@ -25,24 +24,26 @@ type HeaderProps = {
 export default function Header({ logOut }: HeaderProps) {
   const settingsRef = useRef<HTMLAnchorElement>(null);
   const billingRef = useRef<HTMLAnchorElement>(null);
-  const policyRef = useRef<HTMLAnchorElement>(null);
+  // const policyRef = useRef<HTMLAnchorElement>(null);
   const homeRef = useRef<HTMLAnchorElement>(null);
 
-  const [homeFilled, setHomeFilled] = useState(false);
+  const [homeFilled, setHomeFilled] = useState(true);
   const [billingFilled, setBillingFilled] = useState(false);
-  const [policyFilled, setPolicyFilled] = useState(false);
   const [settingsFilled, setSettingsFilled] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
   const [showSignOut, setShowSignOut] = useState(false);
 
-  const activeStates = useCheckActive(homeRef, billingRef, policyRef, settingsRef);
+  const activeStates = useCheckActive(homeRef, billingRef, settingsRef);
   const breakpoint = useScreenWidth();
   useNoBGScroll(isOpen);
 
   const onClose = () => setShowSignOut(false);
   const toggleDropDown = () => setIsOpen((prev) => !prev);
-  const setFilled = (event: "ENTER" | "LEAVE", setter: React.Dispatch<SetStateAction<boolean>>) => {
+  const handleHoverState = (
+    event: "ENTER" | "LEAVE",
+    setter: React.Dispatch<SetStateAction<boolean>>,
+  ) => {
     if (event === "ENTER") setter(true);
     if (event === "LEAVE") setter(false);
   };
@@ -63,8 +64,8 @@ export default function Header({ logOut }: HeaderProps) {
           to="/home"
           className="nav-item"
           ref={homeRef}
-          onMouseEnter={() => setFilled("ENTER", setHomeFilled)}
-          onMouseLeave={() => setFilled("LEAVE", setHomeFilled)}
+          onMouseEnter={() => handleHoverState("ENTER", setHomeFilled)}
+          onMouseLeave={() => handleHoverState("LEAVE", setHomeFilled)}
         >
           <SvgHome filled={homeFilled || activeStates.home} />
           <p>Home</p>
@@ -73,28 +74,28 @@ export default function Header({ logOut }: HeaderProps) {
           to="/billing"
           className="nav-item"
           ref={billingRef}
-          onMouseEnter={() => setFilled("ENTER", setBillingFilled)}
-          onMouseLeave={() => setFilled("LEAVE", setBillingFilled)}
+          onMouseEnter={() => handleHoverState("ENTER", setBillingFilled)}
+          onMouseLeave={() => handleHoverState("LEAVE", setBillingFilled)}
         >
           <SvgBill filled={billingFilled || activeStates.billing} />
           <p>Billing</p>
         </NavLink>
-        <NavLink
+        {/* <NavLink
           to="/mypolicies"
           className="nav-item"
           ref={policyRef}
-          onMouseEnter={() => setFilled("ENTER", setPolicyFilled)}
-          onMouseLeave={() => setFilled("LEAVE", setPolicyFilled)}
+          onMouseEnter={() => handleHoverState("ENTER", setPolicyFilled)}
+          onMouseLeave={() => handleHoverState("LEAVE", setPolicyFilled)}
         >
           <SvgPolicy filled={policyFilled || activeStates.policy} />
           <p>Policy</p>
-        </NavLink>
+        </NavLink> */}
         <NavLink
-          to="/setting"
+          to="/settings"
           className="nav-item desktop-settings"
           ref={settingsRef}
-          onMouseEnter={() => setFilled("ENTER", setSettingsFilled)}
-          onMouseLeave={() => setFilled("LEAVE", setSettingsFilled)}
+          onMouseEnter={() => handleHoverState("ENTER", setSettingsFilled)}
+          onMouseLeave={() => handleHoverState("LEAVE", setSettingsFilled)}
         >
           <SvgSettings filled={settingsFilled || activeStates.settings} />
           <p> Settings </p>

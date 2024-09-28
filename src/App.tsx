@@ -6,6 +6,7 @@ import Header from "layout/header/Header";
 
 import Billing from "./pages/billing/Billing";
 import MFA from "./pages/mfa/MFA";
+import Settings from "./pages/settings/Settings";
 import ForgotPassword from "pages/forgotPassword/ForgotPassword";
 import GuestPayment from "pages/guestPayment/GuestPayment";
 import Home from "pages/home/Home";
@@ -52,6 +53,7 @@ function App() {
           <Route path="/guest-payment" Component={GuestPayment} />
           <Route path="/home" Component={Home} />
           <Route path="/billing" Component={Billing} />
+          <Route path="/settings" element={<Settings logOut={logOut} />} />
         </Routes>
       </main>
       <Footer />

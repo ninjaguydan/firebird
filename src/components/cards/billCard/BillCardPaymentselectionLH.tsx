@@ -43,65 +43,41 @@ export default function BillCardPaymentSelectionLH({
     if (e.target.id !== `loan-${cardIndex}-${policyIndex}`) {
       setTempLoanAmount("");
       setPaymentAmount({ ...paymentAmount, [`loan-${cardIndex}-${policyIndex}`]: 0 });
+    } else {
     }
     if (e.target.id === selectedPayment) {
       setSelectedPayment("");
+      setTempLoanAmount("");
+      setTempOtherAmount("");
       return;
     }
     setSelectedPayment(e.target.id);
   };
 
   const handleOtherAmount = (e: React.ChangeEvent<HTMLInputElement>, onBlur: boolean = false) => {
-    if (outstanding?.billedAmount) {
-      if (onBlur && !tempOtherAmount) {
-        setTempOtherAmount("");
-        return;
-      }
-      let value = e.target.value;
-      const cleanedValue = value.replace(/[^\d.]/g, "");
-      const numericValue = parseFloat(cleanedValue);
-
-      if (!isNaN(numericValue) && numericValue > outstanding?.billedAmount) {
-        value = outstanding?.billedAmount.toFixed(2);
-      }
-
-      if (onBlur && tempOtherAmount) {
-        value = numericValue.toFixed(2);
-      }
-
-      let formattedValue = formatCurrency(value, onBlur);
-      setTempOtherAmount(onBlur ? `$${formattedValue}` : value);
-      let formattedNumber = parseFloat(value.replace(",", ""));
-      setPaymentAmount({ ...paymentAmount, [`other-${cardIndex}`]: formattedNumber });
-      handlePayment(policyIndex, formattedNumber);
+    if (onBlur && !tempOtherAmount) {
+      setTempOtherAmount("");
+      return;
     }
+    let formattedValue = formatCurrency(e.target.value, onBlur);
+    setTempOtherAmount(onBlur ? `$${formattedValue}` : formattedValue);
+
+    let formattedNumber = parseFloat(formattedValue.replace(",", ""));
+    setPaymentAmount({ ...paymentAmount, [`other-${cardIndex}-${policyIndex}`]: formattedNumber });
+    handlePayment(policyIndex, formattedNumber);
   };
 
   const handleLoanAmount = (e: React.ChangeEvent<HTMLInputElement>, onBlur: boolean = false) => {
-    if (outstanding?.billedAmount) {
-      if (onBlur && !tempLoanAmount) {
-        setTempLoanAmount("");
-        return;
-      }
-
-      let value = e.target.value;
-      const cleanedValue = value.replace(/[^\d.]/g, "");
-      const numericValue = parseFloat(cleanedValue);
-
-      if (!isNaN(numericValue) && numericValue > outstanding?.billedAmount) {
-        value = outstanding?.billedAmount.toFixed(2);
-      }
-
-      if (onBlur && tempOtherAmount) {
-        value = numericValue.toFixed(2);
-      }
-
-      let formattedValue = formatCurrency(value, onBlur);
-      setTempLoanAmount(onBlur ? `$${formattedValue}` : value);
-      let formattedNumber = parseFloat(value.replace(",", ""));
-      setPaymentAmount({ ...paymentAmount, [`loan-${cardIndex}-${policyIndex}`]: formattedNumber });
-      handlePayment(policyIndex, formattedNumber);
+    if (onBlur && !tempLoanAmount) {
+      setTempLoanAmount("");
+      return;
     }
+    let formattedValue = formatCurrency(e.target.value, onBlur);
+    setTempLoanAmount(onBlur ? `$${formattedValue}` : formattedValue);
+
+    let formattedNumber = parseFloat(formattedValue.replace(",", ""));
+    setPaymentAmount({ ...paymentAmount, [`loan-${cardIndex}-${policyIndex}`]: formattedNumber });
+    handlePayment(policyIndex, formattedNumber);
   };
 
   useEffect(() => {

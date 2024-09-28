@@ -1,0 +1,404 @@
+main:has(section.settings) {
+  background-color: white;
+}
+
+.settings.nest-card {
+  gap: 1rem;
+}
+
+.settings .card-header {
+  border: unset;
+}
+
+.settings hr {
+  margin: 0;
+  border-color: var(--shade-8);
+  opacity: 0.5;
+}
+
+.settings article {
+  position: relative;
+}
+
+.section-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.section-col .nest-card.account-settings {
+  gap: 1rem;
+  position: relative;
+}
+
+/*===================================
+Communications Form Styles 
+/*===================================*/
+.communication-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.communication-form p,
+.communication-form .toggle-group label {
+  font-size: 0.875rem;
+  color: var(--shade-3);
+}
+
+.email-verified-info-section {
+  display: flex;
+  width: 20rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0.5rem;
+}
+
+div.row-1 {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+div.row-2 {
+  display: inline-flex;
+  gap: 0.5rem;
+  padding-left: 0.1rem;
+  align-items: center;
+}
+
+.email-verified-info-section button.replace-email-btn {
+  display: flex;
+  height: 1.5rem;
+  padding: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid var(--magneato);
+  background: #fff;
+  color: var(--magneato);
+  text-align: center;
+  font-family: "Source Sans Pro";
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.email-verified-info-section p.email-warning-message {
+  color: var(--magneato);
+  font-family: "Source Sans Pro";
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.toggle-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/*===================================
+Billing Form Styles 
+/*===================================*/
+.billing-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.billing-form label.paperless {
+  font-family: "Roboto";
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--shade-3);
+}
+
+.billing-form label.paperless.ON {
+  color: var(--secondary-button-hover);
+}
+
+.billing-form .settings-info {
+  margin: 0;
+}
+
+.email-input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.email-input-group .nest-form-group {
+  width: 100%;
+}
+
+.edit-email-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.field-data .btn-nest {
+  margin-top: 1rem;
+}
+
+.edit-email-btn-group button.icon-btn {
+  position: static;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/*===================================
+Personal Info Styles 
+/*===================================*/
+.settings-personal.nest-card.alt {
+  gap: 0;
+  padding: 0;
+}
+
+.info-field-row {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid var(--chill-wave);
+  padding-bottom: 0.5rem;
+}
+
+.settings-personal .info-field-row {
+  border: unset;
+  padding: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.settings-personal .info-field-row:nth-child(even) {
+  background-color: var(--shade-8);
+}
+
+.address-line {
+  width: 65%;
+  display: inline;
+  margin-left: 35%;
+}
+
+.info-field-row p {
+  font-size: 0.875rem;
+  grid-column: span 8;
+}
+
+.info-field-row p:first-child {
+  font-weight: 600;
+  grid-column: span 4;
+}
+
+@media only screen and (max-width: 490px) {
+  .settings.nest-card {
+    padding: 0;
+    box-shadow: unset;
+    background-color: unset;
+  }
+
+  .settings h3.card-header {
+    font-size: 1.25rem;
+    font-weight: 600;
+    font-family: "Source Sans Pro";
+  }
+
+  .settings h3.card-header svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .section-col .nest-card.account-settings {
+    padding: 0;
+    border: unset;
+    background-color: unset;
+  }
+}
+
+@media only screen and (min-width: 491px) {
+  main:has(section.settings) {
+    background-color: unset;
+  }
+
+  .info-field-row p {
+    grid-column: span 9;
+  }
+
+  .info-field-row p:first-child {
+    grid-column: span 3;
+  }
+
+  .address-line {
+    width: 74%;
+    display: inline;
+    margin-left: 26%;
+  }
+}
+
+@media only screen and (min-width: 721px) {
+  .edit.field-data {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+  }
+
+  #settings-edit {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .email-verified-info-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 1.5rem;
+    width: auto;
+    gap: 0;
+    margin-left: 0rem;
+    margin-top: 0rem;
+  }
+
+  .edit.field-data > div {
+    flex-grow: 1;
+  }
+
+  .edit.field-data .btn-nest {
+    margin: 0;
+  }
+
+  #settings-verify-button {
+    margin: 0 auto;
+  }
+
+  .section-col .btn-nest.primary,
+  .section-col .btn-nest.secondary {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 200px;
+  }
+
+  .section-col .btn-nest.primary.submit {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 320px;
+  }
+
+  .email-input-group {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .settings.nest-card {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .section-col {
+    width: calc(100% - (363px + 2rem));
+    flex-grow: 1;
+  }
+
+  .section-col:first-child {
+    max-width: 363px;
+  }
+
+  .edit.field-data {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .email-verified-info-section {
+    display: flex;
+    width: 20rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-col .btn-nest.primary,
+  .section-col .btn-nest.secondary {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 320px;
+  }
+
+  .email-input-group {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width: 1180px) {
+  .edit.field-data {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  #settings-edit {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .edit.field-data .btn-nest {
+    margin: 0;
+  }
+
+  .email-verified-info-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 1.5rem;
+    width: auto;
+    gap: 0;
+    margin-left: 0rem;
+    margin-top: 0rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-col .btn-nest.primary,
+  .section-col .btn-nest.secondary {
+    margin-right: 0;
+    margin-left: auto;
+    max-width: 200px;
+  }
+
+  #settings-verify-button {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 320px;
+  }
+
+  .section-col .btn-nest.primary.submit {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 320px;
+  }
+
+  .email-input-group {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .nest-form-group.verify-code-field {
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

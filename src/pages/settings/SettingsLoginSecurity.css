@@ -1,0 +1,211 @@
+.login-info-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.login-info-form .mfa-subheader {
+  margin: 0 auto;
+  text-align: start;
+}
+.login-info-form .device-subheader {
+  text-align: center;
+}
+.login-info-form .btn-group {
+  width: 100%;
+  max-width: 400px;
+  margin: 0.5rem auto;
+}
+.field-data-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.field-data-group .field-data {
+  width: 100%;
+}
+.field-data-group + .btn-nest {
+  margin-bottom: 2rem;
+}
+.field-data {
+  font-size: 0.875rem;
+  position: relative;
+}
+.inline {
+  width: 80%;
+}
+.field-label {
+  color: var(--shade-3);
+  font-weight: 600;
+}
+h4.field-label {
+  color: var(--shade-2);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.field-input {
+  color: var(--shade-1);
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--chill-wave);
+}
+.field-input.warning {
+  /* color: var(--shade-1);
+  padding: 0.5rem; */
+  border-bottom: 1px solid var(--magneato);
+}
+.field-input + .settings-info {
+  margin-top: 0.5rem;
+}
+.field-input.loader-block {
+  padding-bottom: 1.5rem;
+}
+.settings-info {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.settings-info svg path {
+  fill: var(--primary-button-hover);
+}
+.settings-info small {
+  width: 90%;
+  font-size: 0.75rem;
+  color: var(--primary-button-hover);
+}
+.mfa-logo {
+  width: 3.125rem;
+  height: 3.125rem;
+  margin: 1rem auto 0;
+}
+.mfa-info h3 {
+  font-size: 1.25rem;
+  text-align: center;
+  color: var(--shade-3);
+}
+.mfa-info p {
+  font-size: 0.75rem;
+  text-align: center;
+}
+.device-box-container {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  align-items: center;
+}
+.device-box-container + .btn-nest {
+  width: 100%;
+  max-width: 320px;
+  margin: 1rem auto 0;
+  flex-direction: column !important;
+}
+.login-info-form .method-header {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.25rem;
+}
+.login-info-form .method-header svg {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+.login-info-form .method-header h3 {
+  font-size: 1.25rem;
+}
+/* .login-info-form .btn-nest.primary {
+  margin: 0;
+  margin-left: auto;
+} */
+.passcode-input-box {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.passcode-input-header {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1rem;
+  color: var(--shade-3);
+}
+.passcode-input-message {
+  font-size: 0.875rem;
+  color: var(--shade-3);
+}
+.passcode-input-device {
+  color: var(--chill-wave-dark);
+}
+.passcode-input-invalid {
+  font-size: 0.75rem;
+  text-align: center;
+  color: var(--error);
+  margin-top: -0.55rem;
+  margin-bottom: -0.3rem;
+}
+.login-info-form .link-text-group {
+  margin-bottom: 1rem;
+}
+.resend-otp-action {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+.resend-otp-action svg {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+.resend-otp-action svg path {
+  fill: var(--chlorophyllis-dark);
+}
+.resend-otp-action p {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--shade-3);
+}
+.password-change-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 546px;
+  margin: 0 auto;
+}
+@media only screen and (min-width: 721px) {
+  .field-data-group {
+    flex-direction: row;
+  }
+  .field-data-group .field-data {
+    width: 50%;
+  }
+  .device-box-container {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+  .device-box-container .mfa-btn {
+    grid-column: span 6;
+    max-width: 100%;
+  }
+}
+@media only screen and (min-width: 800px) {
+  .device-box-container {
+    display: flex;
+  }
+  .device-box-container .mfa-btn {
+    max-width: 320px;
+  }
+}
+@media only screen and (min-width: 1180px) {
+  .device-box-container {
+    display: grid;
+  }
+  .device-box-container .mfa-btn {
+    max-width: 100%;
+  }
+  .login-info-form .btn-group {
+    margin-top: 0rem;
+  }
+}
