@@ -45,8 +45,8 @@ const SettingCommunicationForm = ({
   const [editEmail, setEditEmail] = useState(false);
   const [editName, setEditName] = useState(false);
 
-  const [tempEmail, setTempEmail] = useState("");
-  const [tempName, setTempName] = useState("");
+  const [tempEmail, setTempEmail] = useState(userPersonalInfo.email);
+  const [tempName, setTempName] = useState(userPersonalInfo.preferredName);
 
   const [isEmailSaved, setIsEmailSaved] = useState(false);
   const [isEmailVerified, setIsEmailVerified] = useState(Boolean);
@@ -66,7 +66,7 @@ const SettingCommunicationForm = ({
   const toggleEditEmail = () => {
     setErrorObject((errorObject) => ({
       ...errorObject,
-      email: validateEmail(tempEmail),
+      email: validateEmail(tempEmail!),
     }));
     setEditEmail((prev) => !prev);
   };
@@ -78,7 +78,7 @@ const SettingCommunicationForm = ({
   const toggleEditName = () => {
     setErrorObject((errorObject) => ({
       ...errorObject,
-      nickname: validatePreferredName(tempName),
+      nickname: validatePreferredName(tempName!),
     }));
     setEditName((prev) => !prev);
   };
@@ -122,9 +122,9 @@ const SettingCommunicationForm = ({
     if (action === "SAVE") {
       setErrorObject((errorObject) => ({
         ...errorObject,
-        email: validateEmail(tempEmail),
+        email: validateEmail(tempEmail!),
       }));
-      if (errorObject.email === "" && validateEmail(tempEmail) === "") {
+      if (errorObject.email === "" && validateEmail(tempEmail!) === "") {
         setLoadingStep(true);
         setTimeout(() => {
           setIsEmailVerified(true);
@@ -199,6 +199,7 @@ const SettingCommunicationForm = ({
     e.preventDefault();
     setLoadingStep(true);
     setTimeout(() => {
+      setLoadingStep(false);
       setShowSuccessModal(true);
       setSuccessType("VERIFY_EMAIL");
       setIsEmailVerified(true);
@@ -267,7 +268,7 @@ const SettingCommunicationForm = ({
                 <div className="form-header">
                   <p>Please check your email.</p>
                   <p className="subtext">
-                    Look for the verification email that has been sent to{" "}
+                    Look for the verification email that has been sent to
                     <span className="highlight">{` ${tempEmail || userPersonalInfo.email} `}</span>
                     and enter the code below.
                   </p>
@@ -385,7 +386,7 @@ const SettingCommunicationForm = ({
                   onChange={(e) => {
                     setErrorObject((errorObject) => ({
                       ...errorObject,
-                      email: validateEmail(tempEmail),
+                      email: validateEmail(tempEmail!),
                     }));
                     setTempEmail(e.target.value);
                   }}
@@ -430,9 +431,7 @@ const SettingCommunicationForm = ({
             <div className="field-data edit">
               <div>
                 <h4 className="field-label">Preferred Name</h4>
-                <p className={isLoading ? "loader-block field-input" : "field-input"}>
-                  {userPersonalInfo.preferredName}
-                </p>
+                <p className={isLoading ? "loader-block field-input" : "field-input"}>{tempName}</p>
               </div>
               <button className="btn-nest secondary" onClick={toggleEditName} disabled={isLoading}>
                 <SvgEdit /> Edit Name

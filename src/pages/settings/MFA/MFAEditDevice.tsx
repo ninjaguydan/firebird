@@ -77,7 +77,6 @@ export default function MFAEditDevice({
 
   return (
     <div className={`device-row ${editMode ? "open" : "closed"}`}>
-      {loadingStep && <Loader />}
       <div className="device-data">
         <MFAButtonIcon method={device.type} />
         <p>

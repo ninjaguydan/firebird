@@ -32,11 +32,9 @@ export default function MFAPasscodeAppForm({
 
       <p className="passcode-input-message">Passcode sent to your authenticator app</p>
       <div className="btn-group">
-        {devicesForAuth && devicesForAuth.length > 1 && (
-          <button type="button" className="btn-nest secondary" onClick={handleChangeMethod}>
-            Select Different Method
-          </button>
-        )}
+        <button type="button" className="btn-nest secondary" onClick={handleChangeMethod}>
+          Select Different Method
+        </button>
         <button
           className="btn-nest primary"
           disabled={!code || passCodeError !== "" ? true : false}

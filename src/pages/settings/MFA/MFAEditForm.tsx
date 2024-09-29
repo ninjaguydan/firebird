@@ -67,9 +67,10 @@ export default function MFAEditForm({
       <div className="mfa-edit-devices">
         {isLoading ? (
           <>
-            {devicesForAuthentications.map((device, index) => (
-              <MFADeviceRowLoader key={index} />
-            ))}
+            <MFADeviceRowLoader />
+            <MFADeviceRowLoader />
+            <MFADeviceRowLoader />
+            <MFADeviceRowLoader />\
           </>
         ) : (
           <>

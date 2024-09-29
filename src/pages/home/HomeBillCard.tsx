@@ -67,7 +67,7 @@ export default function HomeBillCard({ bill, removeBill }: HomeBillCardProps) {
   };
 
   const handleContactAgent = () => {
-    alert("They're busy...");
+    alert("Hey! If you got this far, I'm at least worth an interview right...??");
     closeContextMenu();
   };
 

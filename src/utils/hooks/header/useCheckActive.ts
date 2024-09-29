@@ -26,12 +26,7 @@ export default function useCheckActive(
     } else {
       setActiveStates({ ...activeStates, billing: false });
     }
-    // if (policyRef.current!.classList.contains("active")) {
-    //   setActiveStates({ ...activeStates, policy: true });
-    //   return;
-    // } else {
-    //   setActiveStates({ ...activeStates, policy: false });
-    // }
+
     if (settingsRef.current!.classList.contains("active")) {
       setActiveStates({ ...activeStates, settings: true });
       return;
@@ -41,6 +36,7 @@ export default function useCheckActive(
   };
 
   useEffect(() => {
+    checkActive();
     if (homeRef && billingRef && settingsRef) {
       document.addEventListener("click", checkActive);
     }

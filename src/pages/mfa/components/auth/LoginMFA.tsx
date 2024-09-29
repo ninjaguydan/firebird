@@ -37,7 +37,6 @@ type ExistingfMFAProps = {
 
 export default function LoginMFA({
   method,
-  selectMethod,
   resendOtpAction,
   setResendOtpAction,
   devicesForAuth,
@@ -56,7 +55,7 @@ export default function LoginMFA({
   const handleResendPasscode = (e: any) => {
     setDefaultCode((prev) => (prev === undefined ? "" : undefined));
     setPasscode(null);
-    selectMethod(e, deviceSelectedForAuthentication?.type, "EXISTING");
+    setResendOtpAction(true);
   };
 
   const handleFinish = (e: React.FormEvent) => {
@@ -81,7 +80,7 @@ export default function LoginMFA({
     if (resendOtpAction) {
       let timeout = setTimeout(() => {
         setResendOtpAction(false);
-      }, 10000);
+      }, 5000);
       return () => clearTimeout(timeout);
     }
   }, [resendOtpAction]);

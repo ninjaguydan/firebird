@@ -2,7 +2,7 @@ import React, { FormEvent } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import SvgLock from "assets/icons/SvgLock";
-// import SvgPekinLogo from "assets/icons/SvgPekinLogo";
+// import SvgFirebirdLogo from "assets/icons/SvgFirebirdLogo";
 import SvgUser from "assets/icons/SvgUser";
 
 import NestInput from "components/inputs/nestInput/NestInput";

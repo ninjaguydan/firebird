@@ -1,0 +1,60 @@
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.faq.bottom {
+  gap: 0.25rem;
+}
+.faq p {
+  margin-top: 1rem;
+}
+.help-subsection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+.faq-header {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+}
+.faq-header svg {
+  width: 0.75rem;
+  height: 0.75rem;
+  transform: rotate(90deg);
+}
+.faq-header svg path {
+  fill: var(--summer-break-dark);
+}
+.faq-content {
+  font-family: Source Sans Pro;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+/* overwrite MUI styles */
+.faq .css-nde4ue-MuiPaper-root-MuiAccordion-root {
+  background-color: unset !important;
+  /* border-radius: 0.625rem !important; */
+  /* box-shadow: var(--shadow) !important; */
+  margin: 0 !important;
+}
+.faq .css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root {
+  max-height: 48px !important;
+  min-height: unset !important;
+}
+.faq .css-nde4ue-MuiPaper-root-MuiAccordion-root::before {
+  display: none;
+}
+.faq .css-o4b71y-MuiAccordionSummary-content {
+  margin: 12px 0 !important;
+}
+@media only screen and (min-width: 491px) {
+  .faq-header {
+    font-size: 1rem;
+  }
+}

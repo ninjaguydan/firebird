@@ -14,6 +14,8 @@ import { signOutContent } from "src/components/modals/confirmModal/modalContent"
 import "src/layout/header/header.css";
 
 import useCheckActive from "src/utils/hooks/header/useCheckActive";
+import useCheckOpen from "src/utils/hooks/modal/useCheckOpen";
+import useUpdatePopupMargin from "src/utils/hooks/modal/useUpdatePopupMargin";
 import useNoBGScroll from "utils/hooks/general/useNoBGScroll";
 import { useScreenWidth } from "utils/hooks/general/useScreenWidth";
 
@@ -27,7 +29,7 @@ export default function Header({ logOut }: HeaderProps) {
   // const policyRef = useRef<HTMLAnchorElement>(null);
   const homeRef = useRef<HTMLAnchorElement>(null);
 
-  const [homeFilled, setHomeFilled] = useState(true);
+  const [homeFilled, setHomeFilled] = useState(false);
   const [billingFilled, setBillingFilled] = useState(false);
   const [settingsFilled, setSettingsFilled] = useState(false);
 
@@ -36,7 +38,10 @@ export default function Header({ logOut }: HeaderProps) {
 
   const activeStates = useCheckActive(homeRef, billingRef, settingsRef);
   const breakpoint = useScreenWidth();
+
   useNoBGScroll(isOpen);
+  useUpdatePopupMargin(isOpen);
+  useCheckOpen(isOpen);
 
   const onClose = () => setShowSignOut(false);
   const toggleDropDown = () => setIsOpen((prev) => !prev);
@@ -55,7 +60,7 @@ export default function Header({ logOut }: HeaderProps) {
         <Link to="/home" aria-label="Home" className="header-logo">
           <FullLogo />
         </Link>
-        <Link to="/setting" className="settings-link-mobile" aria-label="Settings">
+        <Link to="/settings" className="settings-link-mobile" aria-label="Settings">
           <SvgSettings filled />
         </Link>
       </div>

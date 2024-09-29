@@ -7,12 +7,8 @@ import Loader from "src/components/loaders/generalLoader/Loader";
 import ConfirmModal from "src/components/modals/confirmModal/ConfirmModal";
 import { signOutContent } from "src/components/modals/confirmModal/modalContent";
 import ErrorModal from "src/components/modals/errorModal/ErrorModal";
-import AddMFADeviceSuccessPopup from "src/components/popups/AddMFADeviceSuccessPopup/AddMFADeviceSuccessPopup";
-import DeleteMFADeviceSuccessPopup from "src/components/popups/DeleteMFADeviceSuccessPopup/DeleteMFADeviceSuccessPopup";
-import EmailVerificationSuccessPopup from "src/components/popups/EmailVerificationSuccessPopup/EmailVerificationSuccessPopup";
-import PasswordChangeSuccessPopup from "src/components/popups/PasswordChangeSuccessPopup/PasswordChangeSuccessPopup";
-import UpdateMFADeviceSuccessPopup from "src/components/popups/UpdateMFADeviceSuccessPopup/UpdateMFADeviceSuccessPopup";
-import UpdateNicknameSuccessPopup from "src/components/popups/UpdateNicknameSuccessPopup/UpdateNicknameSuccessPopup";
+
+import SuccessPopup from "src/layout/successPopup/SuccessPopup";
 
 import { EMPTY_USER } from "src/utils/interfaces/registration/IUser";
 
@@ -128,48 +124,14 @@ const Settings = ({ logOut }: SettingProps) => {
           closeModal={handleCloseErrorModal}
           errorMessage={showErrorSubMsg}
         />
-        {successType === "PASSWORD_CHANGE" && (
-          <PasswordChangeSuccessPopup
-            showSuccessPasswordPopup={showSuccessModal}
-            setShowSuccessPasswordPopup={setShowSuccessModal}
-            setSuccessType={setSuccessType}
-          />
-        )}
-        {successType === "ADD_MFA_DEVICE" && (
-          <AddMFADeviceSuccessPopup
-            showSuccessAddMFAPopup={showSuccessModal}
-            setShowSuccessAddMFAPopup={setShowSuccessModal}
-            setSuccessType={setSuccessType}
-          />
-        )}
-        {successType === "DELETE_MFA_DEVICE" && (
-          <DeleteMFADeviceSuccessPopup
-            showSuccessDeleteMFAPopup={showSuccessModal}
-            setShowSuccessDeleteMFAPopup={setShowSuccessModal}
-            setSuccessType={setSuccessType}
-          />
-        )}
-        {successType === "EDIT_MFA_DEVICE" && (
-          <UpdateMFADeviceSuccessPopup
-            showSuccessUpdateMFAPopup={showSuccessModal}
-            setShowSuccessUpdateMFAPopup={setShowSuccessModal}
-            setSuccessType={setSuccessType}
-          />
-        )}
-        {successType === "EDIT_NICKNAME" && (
-          <UpdateNicknameSuccessPopup
-            showSuccessNicknameUpdated={showSuccessModal}
-            setShowSuccessNicknameUpdated={setShowSuccessModal}
-            setSuccessType={setSuccessType}
-          />
-        )}
-        {successType === "VERIFY_EMAIL" && (
-          <EmailVerificationSuccessPopup
-            showSuccessEmailVerified={showSuccessModal}
-            setShowSuccessEmailVerified={setShowSuccessModal}
-            setSuccessType={setSuccessType}
-          />
-        )}
+        <SuccessPopup
+          showSuccessPopup={showSuccessModal}
+          closePopup={() => {
+            setShowSuccessModal(false);
+            setSuccessType("");
+          }}
+          successType={successType}
+        />
       </section>
     </>
   );

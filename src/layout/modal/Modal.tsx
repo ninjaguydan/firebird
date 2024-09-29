@@ -28,7 +28,7 @@ useState [showModal, setShowModal] = useState(false)
 </Modal>
 ------
 
-By default, the modal is styled to match the basic Cards of myPI, but any
+By default, the modal is styled to match the basic Cards of MyFI, but any
 styles may be overwritten via the optional 'classList' prop.
 
 The Modal includes an optional Close button. To use, simply include <Modal.Close /> in your <Modal> wrapper

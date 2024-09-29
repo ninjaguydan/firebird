@@ -49,13 +49,11 @@ export default function SettingsLoginSecurity({
   const [view, setView] = useState<LoginSecurityViews>("DEFAULT");
   const [isExpanded, setIsExpanded] = useState(true);
   const [invalidPasscode, setInvalidPasscode] = useState(false);
-  const [limitExceeded, setLimitExceeded] = useState(false);
   const [resendOtpAction, setResendOtpAction] = useState(false);
   const [selectedDevice, setSelectedDevice] = useState<IDevice>();
   const [deviceToEdit, setDeviceToEdit] = useState<IDevice | undefined>();
   const [deviceSelectEndPoint, setDeviceSelectEndPoint] = useState("");
   const [deviceAuthenticationEndpoint, setDeviceAuthenticationEndpoint] = useState("");
-  const [timeRemainingToRetry, setTimeRemainingToRetry] = useState("");
   const { devices, setDevices, isLoading } = useFetchDevices();
 
   const [logininformation, setLogininformation] = useState({
@@ -69,7 +67,6 @@ export default function SettingsLoginSecurity({
     setResendOtpAction(false);
     setSelectedDevice(undefined);
     setDeviceSelectEndPoint("");
-    setLimitExceeded(false);
     setView("DEFAULT");
   };
 
@@ -88,7 +85,6 @@ export default function SettingsLoginSecurity({
     action?: string,
   ) => {
     setLoadingStep(true);
-    setLimitExceeded(false);
 
     setTimeout(() => {
       setLoadingStep(false);
@@ -111,7 +107,6 @@ export default function SettingsLoginSecurity({
   };
 
   const handleChooseAnotherDevice = () => {
-    setLimitExceeded(false);
     setInvalidPasscode(false);
     setResendOtpAction(false);
     setView("CHOOSE_METHOD");
@@ -119,7 +114,6 @@ export default function SettingsLoginSecurity({
 
   return (
     <article className="login-info-form">
-      {loadingStep && <Loader />}
       <h3 className="card-header" onClick={() => setIsExpanded(!isExpanded)}>
         <SvgLogin /> Login & Security
         <CollapseBtn isExpanded={isExpanded} setIsExpanded={setIsExpanded} withLabel={false} />

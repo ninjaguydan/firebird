@@ -1,0 +1,32 @@
+.success-popup {
+  position: fixed;
+  width: 100%;
+  max-width: 30rem;
+  height: 3.125rem;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  top: 7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  z-index: 999;
+}
+
+.success-popup .success-icon path {
+  fill: var(--chlorophyllis-dark);
+}
+
+.success-popup .icon-btn {
+  height: 2rem;
+  width: 2rem;
+  margin-left: auto;
+}
+
+.success-popup .icon-btn path {
+  fill: var(--shade-2);
+}

@@ -56,13 +56,6 @@ export default function SettingsMFANew({
   const [passcodeError, setPasscodeError] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const [secretValues, setSecretValues] = useState({});
-  const [timeRemaining, setTimeRemaining] = useState<{
-    minutes: string | number;
-    seconds: string | number;
-  } | null>(null);
-  const [targetTimestamp, setTargetTimestamp] = useState(0);
-
   const onRedirect = () => {
     setShowExitEditingConfirmPopup(true);
   };
@@ -130,8 +123,10 @@ export default function SettingsMFANew({
     setResentPasscode(false);
   };
 
-  const handleResendPasscode = () =>
+  const handleResendPasscode = () => {
     setDefaultCode((prev) => (prev === undefined ? "" : undefined));
+    setResentPasscode(true);
+  };
 
   const handleChangeMethod = () => {
     deleteDeviceAction();
