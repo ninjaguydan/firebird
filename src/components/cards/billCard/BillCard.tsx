@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import CollapseBtn from "src/components/buttons/collapseBtn/CollapseBtn";
 import Loader from "src/components/loaders/generalLoader/Loader";
@@ -110,6 +110,12 @@ export default function BillCard({ bill, cardIndex, selectedBill }: BillCardProp
     }, 1000);
   };
 
+  useEffect(() => {
+    if (selectedBill[0]?.accountNumber === account?.accountNumber) {
+      setIsExpanded(true);
+    }
+  }, [selectedBill]);
+
   return (
     <div className="account-card-payments">
       {loadingStep && <Loader />}
@@ -162,7 +168,7 @@ export default function BillCard({ bill, cardIndex, selectedBill }: BillCardProp
         labelText={{ open: "Hide", closed: "Show billing details" }}
         className="policy-detail-toggle"
       />
-      {(isExpanded || selectedBill[0]?.accountNumber === account?.accountNumber) && (
+      {isExpanded && (
         <>
           {account.personalOrCommercial ? (
             <BillCardPolicyListPC

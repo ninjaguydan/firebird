@@ -140,7 +140,7 @@ export default function HomeBillCard({ bill, removeBill }: HomeBillCardProps) {
         </div>
       )}
       <footer className="account-footer">
-        <Link state={bill} to={"/payments"} className="btn-nest primary">
+        <Link state={bill} to={"/billing"} className="btn-nest primary">
           Pay account bill
         </Link>
       </footer>
