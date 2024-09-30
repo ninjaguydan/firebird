@@ -33,24 +33,23 @@ const unauthenticatedPaths = [
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const requiresAuthentication = !unauthenticatedPaths.includes(location.pathname);
   useSesionManagement(isLoggedIn);
   useScrollToTop();
 
   const logIn = () => setIsLoggedIn(true);
   const logOut = () => setIsLoggedIn(false);
-  const mainStyle = () => (unauthenticatedPaths.includes(location.pathname) ? "external" : "");
+  const mainStyle = () => (!isLoggedIn ? "external" : "");
 
   return (
     <>
-      {requiresAuthentication && <Header logOut={logOut} />}
+      {isLoggedIn && <Header logOut={logOut} />}
       <main className={mainStyle()}>
         <Routes>
-          <Route path="/" element={<Login logIn={logIn} />} />
-          <Route path="/login" element={<Login logIn={logIn} />} />
+          <Route path="/" Component={Login} />
+          <Route path="/login" Component={Login} />
           <Route path="forgot-password" Component={ForgotPassword} />
           <Route path="/registration" Component={Registration} />
-          <Route path="verify" Component={MFA} />
+          <Route path="/verify" element={<MFA logIn={logIn} />} />
           <Route path="/guest-payment" Component={GuestPayment} />
           <Route path="/home" Component={Home} />
           <Route path="/billing" Component={Billing} />

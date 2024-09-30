@@ -15,7 +15,11 @@ import "src/pages/mfa/styles/mfa-setup.css";
 
 import { IDevice, IMfaMethods, demoDevices } from "src/utils/interfaces/auth/IMFA";
 
-export default function MFA() {
+type MFAProps = {
+  logIn: () => void;
+};
+
+export default function MFA({ logIn }: MFAProps) {
   const navigate = useNavigate();
 
   const [loadingStep, setLoadingStep] = useState(false);
@@ -76,6 +80,7 @@ export default function MFA() {
           </h1>
           {method === null && <MFAList deviceList={deviceList} selectMethod={selectMethod} />}
           <LoginMFA
+            logIn={logIn}
             method={method}
             selectMethod={selectMethod}
             handleChangeMethod={handleChangeMethod}

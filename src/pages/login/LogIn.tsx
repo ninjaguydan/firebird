@@ -1,4 +1,5 @@
 import { FormEvent, useState } from "react";
+import { useNavigate } from "react-router";
 
 import billingLogin from "assets/images/bill-login.png";
 import learningLogin from "assets/images/learning-login.png";
@@ -11,11 +12,8 @@ import Hero from "layout/hero/Hero";
 
 import "pages/login/login.css";
 
-type LoginProps = {
-  logIn: () => void;
-};
-
-export default function Login({ logIn }: LoginProps) {
+export default function Login() {
+  const navigate = useNavigate();
   const [loadingStep, setLoadingStep] = useState(false);
   const [formValues, setFormValues] = useState({ username: "heisenberg08", password: "" });
   const [error, setError] = useState("");
@@ -32,7 +30,7 @@ export default function Login({ logIn }: LoginProps) {
 
   const authenticateUser = () => {
     setTimeout(() => {
-      logIn();
+      navigate("/verify");
       setLoadingStep(false);
     }, 1000);
   };

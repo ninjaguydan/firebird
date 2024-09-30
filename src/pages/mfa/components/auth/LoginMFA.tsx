@@ -33,6 +33,7 @@ type ExistingfMFAProps = {
   setResendOtpAction: React.Dispatch<SetStateAction<boolean>>;
   handleChangeMethod: (status: "NEW" | "EXISTING") => void;
   deviceSelectedForAuthentication: IDevice;
+  logIn: () => void;
 };
 
 export default function LoginMFA({
@@ -42,6 +43,7 @@ export default function LoginMFA({
   devicesForAuth,
   handleChangeMethod,
   deviceSelectedForAuthentication,
+  logIn,
 }: ExistingfMFAProps) {
   const [passcode, setPasscode] = useState<string | null>(null);
   const [defaultCode, setDefaultCode] = useState<string | undefined>(undefined);
@@ -64,7 +66,7 @@ export default function LoginMFA({
 
     setTimeout(() => {
       setLoadingStep(false);
-      navigate("/home");
+      logIn();
     }, 1000);
   };
 
