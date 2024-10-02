@@ -4,7 +4,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/insurance-portal",
+  base: "/firebird",
   plugins: [react(), tsconfigPaths()],
   resolve: {
     alias: {
